@@ -1,0 +1,84 @@
+div.topic_page {
+	color: rgb(16, 138, 198); text-decoration: underline;
+}
+a {
+	color: rgb(16, 138, 198); text-decoration: underline;
+}
+a:hover {
+	color: white;
+}
+div.app_nav {
+	background-color: rgb(239, 250, 255);
+}
+div#page {
+	background-color: rgb(239, 250, 255);
+}
+.comment_title {
+	background-color: rgb(239, 250, 255);
+}
+tr.mouse_over {
+	background-color: rgb(239, 250, 255);
+}
+div#local {
+	border-color: rgb(16, 138, 198); background-color: white;
+}
+div#main {
+	border-color: rgb(16, 138, 198); background-color: white;
+}
+.blog_main {
+	border-color: rgb(16, 138, 198); background-color: white;
+}
+.pagination a:hover {
+	border-color: rgb(16, 138, 198); background-color: white;
+}
+.pagination a:active {
+	border-color: rgb(16, 138, 198); background-color: white;
+}
+div.nav {
+	background-color: rgb(16, 138, 198);
+}
+div#app_list div.decorate {
+	background-color: rgb(16, 138, 198);
+}
+a:hover {
+	background-color: rgb(16, 138, 198);
+}
+div#branding {
+	background-color: rgb(16, 138, 198);
+}
+input.button {
+	background-color: rgb(16, 138, 198);
+}
+input.submit {
+	background-color: rgb(16, 138, 198);
+}
+td.buttons a {
+	background-color: rgb(16, 138, 198);
+}
+.pagination span.current {
+	background-color: rgb(16, 138, 198);
+}
+.blog_bottom li {
+	color: rgb(16, 138, 198); border-right-color: rgb(16, 138, 198);
+}
+table.admin thead {
+	color: rgb(16, 138, 198);
+}
+.pagination a {
+	color: rgb(16, 138, 198);
+}
+.pagination a:visited {
+	color: rgb(16, 138, 198);
+}
+div.app_nav {
+	border-color: rgb(16, 138, 198);
+}
+.pagination span.current {
+	border-color: rgb(16, 138, 198);
+}
+.blog_comment {
+	border-top-color: rgb(16, 138, 198);
+}
+div.picture_full {
+	border-top-color: rgb(16, 138, 198);
+}

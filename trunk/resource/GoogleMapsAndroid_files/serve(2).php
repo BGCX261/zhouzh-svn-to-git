@@ -1,0 +1,1 @@
+document.write('\x3cdiv class=\"image-advertisement\" id=\"ad-3240\"\x3e\x3ca href=\"http://mobiforge.com/ad/redirect/3240/t216/\" title=\"\" onclick=\"window.open(this.href); return false;\"\x3e\x3cimg src=\"http://mobiforge.com/sites/mobiforge.com/files/gomobi_ani.gif?1321098059\" width=\"180\" height=\"150\" alt=\"\" /\x3e\x3c/a\x3e\x3c/div\x3e');

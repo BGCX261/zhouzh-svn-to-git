@@ -1,0 +1,2517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)http://mobiforge.com/developing/story/using-google-maps-android -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./GoogleMapsAndroid_files/widget70.css" media="all">
+    
+    <meta http-equiv="Content-Language" content="en-gb">
+
+
+
+    <title>Using Google Maps in Android | mobiForge</title>
+
+    <link rel="alternate" type="application/rss+xml" title="mobiForge RSS" href="http://mobiforge.com/rss.xml">
+    <link rel="shortcut icon" href="http://mobiforge.com/sites/all/themes/zen/mobiforge/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://mobiforge.com/sites/all/themes/zen/mobiforge/favicon.ico" type="image/x-icon">
+
+    <script type="text/javascript" src="./GoogleMapsAndroid_files/swfobject.js"></script>
+
+    
+<link rel="alternate" type="application/rss+xml" title="Comments for Using Google Maps in Android" href="http://mobiforge.com/crss/node/1988">
+
+<meta name="description" content="Google Maps comes bundled with Android. This article shows how to do some cool things by integrating Maps into your Android apps">
+<meta name="keywords" content="Android Maps Tutorial,Google maps,howto">
+<link rel="shortcut icon" href="http://mobiforge.com/sites/all/themes/zen/mobiforge/favicon.ico" type="image/x-icon">
+    <style type="text/css" media="all">@import "/sites/mobiforge.com/files/css/4db8f1037f3222dcd3bb3e1a15b47017.css";</style>
+
+    <link media="all" href="./GoogleMapsAndroid_files/screen.css" type="text/css" rel="stylesheet">
+    <link media="print" href="./GoogleMapsAndroid_files/print.css" type="text/css" rel="stylesheet">
+    <!--[if IE]><link rel="stylesheet" type="text/css" href="/sites/all/themes/zen/mobiforge/blueprint/ie.css"><![endif]-->
+
+    <link media="all" href="./GoogleMapsAndroid_files/screen(1).css" type="text/css" rel="stylesheet">
+    <link media="all" href="./GoogleMapsAndroid_files/integration.css" type="text/css" rel="stylesheet">
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/sites/all/themes/zen/mobiforge/css/ie6.css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/sites/all/themes/zen/mobiforge/css/ie7.css"><![endif]-->
+
+  <!--[if IE 6]>
+      <link rel="stylesheet" href="/sites/all/themes/zen/mobiforge/integration-ie6.css?c=4" type="text/css">
+  <![endif]-->
+  <!--[if IE 7]>
+      <link rel="stylesheet" href="/sites/all/themes/zen/mobiforge/integration-ie7.css?c=2" type="text/css">
+  <![endif]-->
+
+    <script type="text/javascript" src="./GoogleMapsAndroid_files/jquery.js"></script>
+<script type="text/javascript" src="./GoogleMapsAndroid_files/drupal.js"></script>
+<script type="text/javascript" src="./GoogleMapsAndroid_files/drigg.js"></script>
+<script type="text/javascript" src="./GoogleMapsAndroid_files/extra_voting_forms.js"></script>
+<script type="text/javascript">Drupal.extend({ settings: { "drigg": { "base_path": "/" }, "extra_voting_forms": { "only_one_vote": 1, "login_page": "user/login", "base_path": "/", "jquery_timeout": "2000", "hide_karma_form": 0 } } });</script>
+  </head>
+
+  <body><div style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000; " id="_atssh"><iframe id="_atssh790" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; left: 0px; top: 0px; " src="./GoogleMapsAndroid_files/sh68.htm"></iframe></div>
+    <div id="dm_family"><a class="dm_dotmobi" href="http://mtld.mobi/">dot<span class="dm_hover">Mobi</span></a><a class="dm_mobithinking" href="http://mobithinking.com/">mobi<span class="dm_hover">Thinking</span></a><a class="dm_mobiforge" href="http://mobiforge.com/">mobi<span class="dm_active">Forge</span></a><a class="dm_mobiready" href="http://ready.mobi/">mobi<span class="dm_hover">Ready</span></a><a class="dm_deviceatlas" href="http://deviceatlas.com/">Device<span class="dm_hover">Atlas</span></a><a class="dm_gomobi" href="http://gomobi.info/">go<span class="dm_hover">Mobi</span></a></div>
+    <img id="bground" src="./GoogleMapsAndroid_files/true">
+    <img id="search-over" src="./GoogleMapsAndroid_files/search-button-over.png" style="display:none">
+    <img id="read-more-over" src="./GoogleMapsAndroid_files/read-more-button-over.png" style="display:none">
+
+    <div id="masthead" class="container">
+
+      <div class="left span-16 first">
+<!--        <a onclick='document.cookie="dm_switcher=mobile;path=/;expires=Tue, 01-01-2030 00:00:00 GMT";' href='http://mobiforge.mobi/developing/story/using-google-maps-android?dm_switcher=true'><img src='/sites/all/modules/common/dm_switcher/mobile.gif' width='16' height='16' style='border:0;padding-right:2px;vertical-align:bottom' alt='Switcher icon' /></a><a onclick='document.cookie="dm_switcher=mobile;path=/;expires=Tue, 01-01-2030 00:00:00 GMT";' href='http://mobiforge.mobi/developing/story/using-google-maps-android?dm_switcher=true'>Switch to our mobile site</a> -->
+        <div class="follow-links"> <a onclick="document.cookie=&quot;dm_switcher=mobile;path=/;expires=Tue, 01-01-2030 00:00:00 GMT&quot;;" href="http://mobiforge.mobi/developing/story/using-google-maps-android?dm_switcher=true"><img src="./GoogleMapsAndroid_files/mobile.gif" width="16" height="16" style="border:0;padding-right:2px;vertical-align:bottom" alt="Switcher icon"></a><a onclick="document.cookie=&quot;dm_switcher=mobile;path=/;expires=Tue, 01-01-2030 00:00:00 GMT&quot;;" href="http://mobiforge.mobi/developing/story/using-google-maps-android?dm_switcher=true">Switch to our mobile site</a>&nbsp;&nbsp;
+<a href="http://twitter.com/mobiforge" title="Follow mobiForge on Twitter"><img src="./GoogleMapsAndroid_files/twitter_rss.gif"></a> <a href="http://mobiforge.com/rssfeed" title="Follow mobiForge via RSS"><img src="./GoogleMapsAndroid_files/mini-rss-badge.gif"></a> <a href="http://mobiforge.com/rssfeed" title="Follow mobiForge via RSS">Follow us</a>
+          
+        </div>
+      </div>
+
+      <div class="right span-32 last">
+        <ul><li class="first"><a href="http://mobiforge.com/user/0/edit?destination=node%2F1988">Sign in</a></li><li><a href="http://mobiforge.com/user/register">Sign up</a></li></ul>      </div>
+
+    </div>
+
+    <div id="wrapper" class="container">
+      <div id="logo-wrap" class="inside-container clearfix">
+        <div class="first left">
+          <div>
+            <a href="http://mobiforge.com/" id="logo-link">
+<!--
+<img width="180" title="mobiForge : Home" alt="mobiForge : Home" id="logo" src="/images/mf-xmas-180.jpg"/>
+-->
+<img height="36" width="180" title="mobiForge : Home" alt="mobiForge : Home" id="logo" src="./GoogleMapsAndroid_files/logo_180x36.jpg">
+            </a>
+
+<div class="advertisement group-tids-241" id="group-id-tids-241"><script type="text/javascript" src="./GoogleMapsAndroid_files/serve.php"></script><div class="image-advertisement" id="ad-3634"><a href="http://mobiforge.com/ad/redirect/3634/t241/" title="" onclick="window.open(this.href); return false;"><img src="./GoogleMapsAndroid_files/da-468x60.jpg" width="468" height="60" alt=""></a></div></div>
+          </div>
+        </div>
+
+        <div class="span-11 last" id="banner-right">
+          <form action="http://mobiforge.com/search" accept-charset="UTF-8" method="post" id="dm-verticalsearch-block-form">
+<div><div class="form-item">
+ <input type="text" maxlength="128" name="dm_verticalsearch_block_form_keys" id="edit-dm-verticalsearch-block-form-keys" size="15" value="" title="Enter search terms" class="form-text">
+</div>
+<input type="submit" name="op" id="edit-submit" value="" class="form-submit">
+<input type="hidden" name="form_id" id="edit-dm-verticalsearch-block-form" value="dm_verticalsearch_block_form">
+
+</div></form>
+        </div>
+
+</div>
+
+<!-- google_ad_section_start(weight=ignore) -->
+        <div id="sub-menu">
+          <ul>
+            <li class="first strong "><a href="http://mobiforge.com/">Home</a></li>
+            <li class="strong"><a href="http://mobiforge.com/page/about-mobiforge">About</a></li>
+            <li class="strong"><a href="http://mobiforge.com/page/write-us-0">Contribute</a></li>
+            <li class="strong"><a href="http://mobiforge.com/page/contact">Contact</a></li>
+            <li class="strong"><a href="http://mobiforge.com/webform/advertise-mobiforge" title="Advertise">Advertise</a></li>
+	    <li class="strong"><a href="http://mobiforge.com/tracker" title="Latest">Latest</a></li>
+          </ul>
+        </div>
+<!-- google_ad_section_end -->
+
+
+      <div id="nav" class="inside-container clearfix clear">
+        <div id="primary" class="span-30 first">
+          <ul>
+            <li><a href="http://mobiforge.com/Starting">Starting</a></li><li class="preactive"><a href="http://mobiforge.com/Designing">Designing</a></li><li class="active"><a href="http://mobiforge.com/Developing">Developing</a></li><li><a href="http://mobiforge.com/Testing">Testing</a></li><li><a href="http://mobiforge.com/Running">Running</a></li>          </ul>
+        </div>
+
+        <div id="secondary" class="span-17 last">
+          <ul>
+            <li><a href="http://mobiforge.com/antenna">Antenna</a></li>
+            <li><a href="http://mobiforge.com/mobile-tip-of-the-day">Tips</a></li>
+            <li><a href="http://mobiforge.com/blog">Blog</a></li>
+            <li><a href="http://mobiforge.com/forum">Forum</a></li>
+            <li><a href="http://mobiforge.com/directory">Directory</a></li>
+          </ul>
+
+        </div>
+      </div>
+    
+      <!--<div id="article" class="inside-container">-->
+<div id="content-home" class="inside-container clearfix">
+
+
+  <div id="content">
+
+          <div id="content-header">
+              </div> <!-- /#content-header -->
+    <!-- google_ad_section_start(weight=ignore) -->
+    <div class="breadcrumb clearfix">
+      <ul>
+        <li><a href="http://mobiforge.com/">Home</a></li>
+        <li><a href="http://mobiforge.com/Developing">Developing</a></li>
+        <li><a href="http://mobiforge.com/Developing/article-listing">Article</a></li>
+        <li class="last"><a href="http://mobiforge.com/developing/story/using-google-maps-android#">Using Google Maps in Android</a></li>
+      </ul>
+      <a href="http://mobiforge.com/Developing/article-listing/feed" class="follow-us">Follow us</a>    </div> <!-- .breadcrumb -->
+<!-- google_ad_section_end -->
+    
+  <div class="screen mb20 clearfix">
+    <div class="section first">
+      <div class="inside">
+    <!-- google_ad_section_start --> 
+        <h1>Using Google Maps in Android</h1>
+        <img id="feature-image" src="./GoogleMapsAndroid_files/true(1)" width="240" height="180" alt="Section Feature image">                      <div id="att-container">
+        <div class="content-attribution">
+
+         <strong>Posted by weimenglee 2 years 31 weeks ago</strong>        </div>
+        <div style="float:right">
+          <!-- AddThis Button BEGIN -->
+            <a href="http://www.addthis.com/bookmark.php?v=250&pub=ruadhan" onmouseover="return addthis_open(this, &#39;&#39;, &#39;[URL]&#39;, &#39;[TITLE]&#39;)" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="./GoogleMapsAndroid_files/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0;margin:0"></a><script type="text/javascript" src="./GoogleMapsAndroid_files/addthis_widget.js"></script>
+          <!-- AddThis Button END -->
+        </div>
+      </div>
+
+
+        <br>
+             <div id="related-block">
+  <div class="related-title">See also...</div>
+    <div class="related-content">
+      <ul>
+<li><a href="http://mobiforge.com/developing/story/displaying-status-bar-notifications-android">Displaying Status Bar Notifications in Android</a></li>
+<li><a href="http://mobiforge.com/developing/story/preserving-user-preferences-android-applications">Preserving User Preferences in Android Applications</a></li>
+<li><a href="http://mobiforge.com/designing/story/building-location-service-apps-windows-phone-7">Building Location Service Apps in Windows Phone 7</a></li>
+<li><a href="http://mobiforge.com/developing/story/introduction-windows-phone-7-development">Introduction to Windows Phone 7 Development</a></li>
+<li><a href="http://mobiforge.com/developing/story/location-iphone-web-apps">Location in iPhone Web Apps</a></li>
+</ul>
+    </div>
+</div>
+     <p>Google Maps is one of the many applications bundled with the Android platform. In addition to simply using the Maps application, you can also embed it into your own applications and make it do some very cool things. In this article, I will show you how to use Google Maps in your Android applications and how to programmatically perform the following:</p>
+<ol><li>Change the views of Google Maps</li>
+<li>Obtain the latitude and longitude of locations in Google Maps</li>
+<li>Perform geocoding and reverse geocoding</li>
+<li>Add markers to Google Maps</li>
+</ol>
+<p></p>
+<h2>Creating the Project</h2>
+<p>Using Eclipse, create a new Android project and name <em>GoogleMaps</em> as shown in Figure 1.</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-1.png"><br>
+<strong>Figure 1</strong>  Creating a new Android project using Eclipse
+</p>
+<h2>Obtaining a Maps API key</h2>
+<p>Beginning with the Android SDK release v1.0, you need to apply for a free Google Maps API key before you can integrate Google Maps into your Android application. To apply for a key, you need to follow the series of steps outlined below. You can also refer to Google's detailed documentation on the process at <a href="http://code.google.com/android/toolbox/apis/mapkey.html"> </a><a href="http://code.google.com/android/toolbox/apis/mapkey.html">http://code.google.com/android/toolbox/apis/mapkey.html</a>.</p>
+<p>First, if you are testing the application on the Android emulator, locate the SDK debug certificate located in the default folder of <span class="geshifilter"><code class="geshifilter-text">"C:\Documents and Settings\&lt;username&gt;\Local Settings\Application Data\Android"</code></span>. The filename of the debug keystore is <span class="geshifilter"><code class="geshifilter-text">debug.keystore</code></span>. For deploying to a real Android device, substitute the <span class="geshifilter"><code class="geshifilter-text">debug.keystore</code></span> file with your own keystore file. In a future article I will discuss how you can generate your own keystore file.</p>
+<p>For simplicity, copy this file (<span class="geshifilter"><code class="geshifilter-text">debug.keystore</code></span>) to a folder in <span class="geshifilter"><code class="geshifilter-text">C:\</code></span> (for example, create a folder called "<span class="geshifilter"><code class="geshifilter-text">C:\Android</code></span>"). </p>
+<p>Using the debug keystore, you need to extract its MD5 fingerprint using the <span class="geshifilter"><code class="geshifilter-text">Keytool.exe</code></span> application included with your JDK installation. This fingerprint is needed to apply for the free Google Maps key. You can usually find the <span class="geshifilter"><code class="geshifilter-text">Keytool.exe</code></span> from the "<span class="geshifilter"><code class="geshifilter-text">C:\Program Files\Java\&lt;JDK_version_number&gt;\bin</code></span>" folder.</p>
+<p>Issue the following command (see also Figure 2) to extract the MD5 fingerprint. </p>
+<div class="geshifilter">
+<pre class="geshifilter-text">keytool.exe -list -alias androiddebugkey -keystore "C:\android\debug.keystore" -storepass android -keypass android</pre></div>
+<p>Copy the MD5 certificate fingerprint and navigate your web browser to: <a href="http://code.google.com/android/maps-api-signup.html">http://code.google.com/android/maps-api-signup.html</a>. Follow the instructions on the page to complete the application and obtain the Google Maps key. </p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-2.png"><br>
+<strong>Figure 2</strong>  Obtaining the MD5 fingerprint of the debug keystore
+</p>
+<p>To use the Google Maps in your Android application, you need to modify your <span class="geshifilter"><code class="geshifilter-text">AndroidManifest.xml</code></span> file by adding the <span class="geshifilter"><code class="geshifilter-text">&lt;uses-library&gt;</code></span> element together with the <span class="geshifilter"><code class="geshifilter-text">INTERNET</code></span> permission:</p>
+<div class="geshifilter">
+<pre class="geshifilter-xml"><span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">"1.0"</span> <span style="color: #000066;">encoding</span>=<span style="color: #ff0000;">"utf-8"</span><span style="font-weight: bold; color: black;">?&gt;</span></span>
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;manifest</span> <span style="color: #000066;">xmlns:android</span>=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span>
+      <span style="color: #000066;">package</span>=<span style="color: #ff0000;">"net.learn2develop.GoogleMaps"</span>
+      <span style="color: #000066;">android:versionCode</span>=<span style="color: #ff0000;">"1"</span>
+      <span style="color: #000066;">android:versionName</span>=<span style="color: #ff0000;">"1.0.0"</span><span style="font-weight: bold; color: black;">&gt;</span></span>
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;application</span> <span style="color: #000066;">android:icon</span>=<span style="color: #ff0000;">"@drawable/icon"</span> <span style="color: #000066;">android:label</span>=<span style="color: #ff0000;">"@string/app_name"</span><span style="font-weight: bold; color: black;">&gt;</span></span>
+&nbsp;
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;uses-library</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">"com.google.android.maps"</span> <span style="font-weight: bold; color: black;">/&gt;</span></span>  
+&nbsp;
+        <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;activity</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">".MapsActivity"</span>
+                  <span style="color: #000066;">android:label</span>=<span style="color: #ff0000;">"@string/app_name"</span><span style="font-weight: bold; color: black;">&gt;</span></span>
+            <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;intent-filter<span style="font-weight: bold; color: black;">&gt;</span></span></span>
+                <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;action</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">"android.intent.action.MAIN"</span> <span style="font-weight: bold; color: black;">/&gt;</span></span>
+                <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;category</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">"android.intent.category.LAUNCHER"</span> <span style="font-weight: bold; color: black;">/&gt;</span></span>
+            <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/intent-filter<span style="font-weight: bold; color: black;">&gt;</span></span></span>
+        <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/activity<span style="font-weight: bold; color: black;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/application<span style="font-weight: bold; color: black;">&gt;</span></span></span>
+&nbsp;
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;uses-permission</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">"android.permission.INTERNET"</span> <span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp;
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/manifest<span style="font-weight: bold; color: black;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/xml<span style="font-weight: bold; color: black;">&gt;</span></span></span></pre></div>
+<p></p>
+<h2>Displaying the Map</h2>
+<p>To display the Google Maps in your Android application, modify the <span class="geshifilter"><code class="geshifilter-text">main.xml</code></span> file located in the <span class="geshifilter"><code class="geshifilter-text">res/layout</code></span> folder. You shall use the <span class="geshifilter"><code class="geshifilter-text">&lt;com.google.android.maps.MapView&gt;</code></span> element to display the Google Maps in your activity. In addition, let's use the <span class="geshifilter"><code class="geshifilter-text">&lt;RelativeLayout&gt;</code></span> element to position the map within the activity:</p>
+<div class="geshifilter">
+<pre class="geshifilter-xml"><span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">"1.0"</span> <span style="color: #000066;">encoding</span>=<span style="color: #ff0000;">"utf-8"</span><span style="font-weight: bold; color: black;">?&gt;</span></span>
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;RelativeLayout</span> <span style="color: #000066;">xmlns:android</span>=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span> 
+    <span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span> 
+    <span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span><span style="font-weight: bold; color: black;">&gt;</span></span>
+&nbsp;
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;com</span>.google.android.maps.MapView 
+        <span style="color: #000066;">android:id</span>=<span style="color: #ff0000;">"@+id/mapView"</span>
+        <span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span>
+        <span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span>
+        <span style="color: #000066;">android:enabled</span>=<span style="color: #ff0000;">"true"</span>
+        <span style="color: #000066;">android:clickable</span>=<span style="color: #ff0000;">"true"</span>
+        <span style="color: #000066;">android:apiKey</span>=<span style="color: #ff0000;">"0l4sCTTyRmXTNo7k8DREHvEaLar2UmHGwnhZVHQ"</span>
+        <span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp;
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/RelativeLayout<span style="font-weight: bold; color: black;">&gt;</span></span></span></pre></div>
+<p></p>
+<p>Notice from above that I have used the Google Maps key that I obtained earlier and put it into the <span class="geshifilter"><code class="geshifilter-text">apiKey</code></span> attribute.</p>
+<p>In the <span class="geshifilter"><code class="geshifilter-text">MapsActivity.java</code></span> file, modify the class to extend from the <span class="geshifilter"><code class="geshifilter-text">MapActivity</code></span> class, instead of the normal <span class="geshifilter"><code class="geshifilter-text">Activity</code></span> class: </p>
+<div class="geshifilter">
+<pre class="geshifilter-java"><span style="color: #000000; font-weight: bold;">package</span> net.<span style="color: #006600;">learn2develop</span>.<span style="color: #006600;">GoogleMaps</span><span style="color: #66cc66;">;</span>
+&nbsp;
+<span style="color: #a1a100;">import com.google.android.maps.MapActivity;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView;</span>
+<span style="color: #a1a100;">import android.os.Bundle;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MapsActivity <span style="color: #000000; font-weight: bold;">extends</span> MapActivity 
+<span style="color: #66cc66;">{</span>    
+    <span style="color: #808080; font-style: italic;">/** Called when the activity is first created. */</span>
+    @Override
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">void</span> onCreate<span style="color: #66cc66;">(</span>Bundle savedInstanceState<span style="color: #66cc66;">)</span>
+    <span style="color: #66cc66;">{</span>
+        <span style="color: #000000; font-weight: bold;">super</span>.<span style="color: #006600;">onCreate</span><span style="color: #66cc66;">(</span>savedInstanceState<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        setContentView<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">layout</span>.<span style="color: #006600;">main</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+&nbsp;
+    @Override
+    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #993333;">boolean</span> isRouteDisplayed<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+        <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+<span style="color: #66cc66;">}</span></pre></div>
+<p></p>
+<p>Observe that if your class extends the <span class="geshifilter"><code class="geshifilter-text">MapActivity</code></span> class, you need to override the <span class="geshifilter"><code class="geshifilter-text">isRouteDisplayed()</code></span> method. You can simply do so by setting the method to return false.</p>
+<p>That's it! That's all you need to do to display the Google Maps in your application. Press <span class="geshifilter"><code class="geshifilter-text">F11</code></span> in Eclipse to deploy the application onto an Android emulator. Figure 3 shows the Google map in all its glory.</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-3.png"><br>
+<strong>Figure 3</strong>  Google Maps in your application
+</p>
+<p>At this juncture, take note of a few troubleshooting details. If your program does not run (i.e. it crashes), then it is likely you forgot to put the following statement in your <span class="geshifilter"><code class="geshifilter-text">AndroidManifest.xml</code></span> file:</p>
+<div class="geshifilter">
+<pre class="geshifilter-xml">    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;uses-library</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">"com.google.android.maps"</span> <span style="font-weight: bold; color: black;">/&gt;</span></span></pre></div>
+<p></p>
+<p>If your application manages to load but you cannot see the map (all you see is a grid), then it is very likely you do not have a valid Map key, or that you did not specify the <span class="geshifilter"><code class="geshifilter-text">INTERNET</code></span> permission:</p>
+<div class="geshifilter">
+<pre class="geshifilter-xml">    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;uses-permission</span> <span style="color: #000066;">android:name</span>=<span style="color: #ff0000;">"android.permission.INTERNET"</span> <span style="font-weight: bold; color: black;">/&gt;</span></span></pre></div>
+<p></p>
+<h2>Displaying the Zoom View</h2>
+<p>The previous section showed how you can display the Google Maps in your Android device. You can drag the map to any desired location and it will be updated on the fly. However, observe that there is no way to zoom in or out from a particular location. Thus, in this section, you will learn how you can let users zoom into or out of the map.</p>
+<p>First, add a <span class="geshifilter"><code class="geshifilter-text">&lt;LinearLayout&gt;</code></span> element to the <span class="geshifilter"><code class="geshifilter-text">main.xml</code></span> file as shown below:  </p>
+<div class="geshifilter">
+<pre class="geshifilter-xml"><span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">"1.0"</span> <span style="color: #000066;">encoding</span>=<span style="color: #ff0000;">"utf-8"</span><span style="font-weight: bold; color: black;">?&gt;</span></span>
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;RelativeLayout</span> <span style="color: #000066;">xmlns:android</span>=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span> 
+    <span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span> 
+    <span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span><span style="font-weight: bold; color: black;">&gt;</span></span>
+&nbsp;
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;com</span>.google.android.maps.MapView 
+        <span style="color: #000066;">android:id</span>=<span style="color: #ff0000;">"@+id/mapView"</span>
+        <span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"fill_parent"</span>
+        <span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"fill_parent"</span>
+        <span style="color: #000066;">android:enabled</span>=<span style="color: #ff0000;">"true"</span>
+        <span style="color: #000066;">android:clickable</span>=<span style="color: #ff0000;">"true"</span>
+        <span style="color: #000066;">android:apiKey</span>=<span style="color: #ff0000;">"0l4sCTTyRmXTNo7k8DREHvEaLar2UmHGwnhZVHQ"</span>
+        <span style="font-weight: bold; color: black;">/&gt;</span></span>
+&nbsp;
+    <span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;LinearLayout</span> <span style="color: #000066;">android:id</span>=<span style="color: #ff0000;">"@+id/zoom"</span> 
+        <span style="color: #000066;">android:layout_width</span>=<span style="color: #ff0000;">"wrap_content"</span> 
+        <span style="color: #000066;">android:layout_height</span>=<span style="color: #ff0000;">"wrap_content"</span> 
+        <span style="color: #000066;">android:layout_alignParentBottom</span>=<span style="color: #ff0000;">"true"</span> 
+        <span style="color: #000066;">android:layout_centerHorizontal</span>=<span style="color: #ff0000;">"true"</span> 
+        <span style="font-weight: bold; color: black;">/&gt;</span></span> 
+&nbsp;
+<span style="color: #009900;"><span style="font-weight: bold; color: black;">&lt;/RelativeLayout<span style="font-weight: bold; color: black;">&gt;</span></span></span></pre></div>
+<p></p>
+<p>You will use the <span class="geshifilter"><code class="geshifilter-text">&lt;LinearLayout&gt;</code></span> element to hold the two zoom controls in Google Maps (you will see this shortly).</p>
+<p>In the <span class="geshifilter"><code class="geshifilter-text">MapsActivity.java</code></span> file, add the following imports:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java"><span style="color: #a1a100;">import com.google.android.maps.MapView.LayoutParams;  </span>
+<span style="color: #a1a100;">import android.view.View;</span>
+<span style="color: #a1a100;">import android.widget.LinearLayout;</span></pre></div>
+<p>and add the following code after the line <span class="geshifilter"><code class="geshifilter-java">setContentView<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">layout</span>.<span style="color: #006600;">main</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span></code></span></p>
+<div class="geshifilter">
+<pre class="geshifilter-java">        mapView = <span style="color: #66cc66;">(</span>MapView<span style="color: #66cc66;">)</span> findViewById<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">id</span>.<span style="color: #006600;">mapView</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        LinearLayout zoomLayout = <span style="color: #66cc66;">(</span>LinearLayout<span style="color: #66cc66;">)</span>findViewById<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">id</span>.<span style="color: #006600;">zoom</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>  
+        <a href="http://www.google.com/search?hl=en&q=allinurl%3AView+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">View</span></a> zoomView = mapView.<span style="color: #006600;">getZoomControls</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+&nbsp;
+        zoomLayout.<span style="color: #006600;">addView</span><span style="color: #66cc66;">(</span>zoomView, 
+            <span style="color: #000000; font-weight: bold;">new</span> LinearLayout.<span style="color: #006600;">LayoutParams</span><span style="color: #66cc66;">(</span>
+                LayoutParams.<span style="color: #006600;">WRAP_CONTENT</span>, 
+                LayoutParams.<span style="color: #006600;">WRAP_CONTENT</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+        mapView.<span style="color: #006600;">displayZoomControls</span><span style="color: #66cc66;">(</span><span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span></pre></div>
+<p>The complete <span class="geshifilter"><code class="geshifilter-text">MapsActivity.java</code></span> file is given below:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java"><span style="color: #000000; font-weight: bold;">package</span> net.<span style="color: #006600;">learn2develop</span>.<span style="color: #006600;">GoogleMaps</span><span style="color: #66cc66;">;</span>
+&nbsp;
+<span style="color: #a1a100;">import com.google.android.maps.MapActivity;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView.LayoutParams;  </span>
+&nbsp;
+<span style="color: #a1a100;">import android.os.Bundle;</span>
+<span style="color: #a1a100;">import android.view.View;</span>
+<span style="color: #a1a100;">import android.widget.LinearLayout;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MapsActivity <span style="color: #000000; font-weight: bold;">extends</span> MapActivity 
+<span style="color: #66cc66;">{</span>    
+    MapView mapView<span style="color: #66cc66;">;</span> 
+&nbsp;
+    <span style="color: #808080; font-style: italic;">/** Called when the activity is first created. */</span>
+    @Override
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">void</span> onCreate<span style="color: #66cc66;">(</span>Bundle savedInstanceState<span style="color: #66cc66;">)</span> 
+    <span style="color: #66cc66;">{</span>
+        <span style="color: #000000; font-weight: bold;">super</span>.<span style="color: #006600;">onCreate</span><span style="color: #66cc66;">(</span>savedInstanceState<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        setContentView<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">layout</span>.<span style="color: #006600;">main</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+&nbsp;
+        mapView = <span style="color: #66cc66;">(</span>MapView<span style="color: #66cc66;">)</span> findViewById<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">id</span>.<span style="color: #006600;">mapView</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        LinearLayout zoomLayout = <span style="color: #66cc66;">(</span>LinearLayout<span style="color: #66cc66;">)</span>findViewById<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">id</span>.<span style="color: #006600;">zoom</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>  
+        <a href="http://www.google.com/search?hl=en&q=allinurl%3AView+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">View</span></a> zoomView = mapView.<span style="color: #006600;">getZoomControls</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+&nbsp;
+        zoomLayout.<span style="color: #006600;">addView</span><span style="color: #66cc66;">(</span>zoomView, 
+            <span style="color: #000000; font-weight: bold;">new</span> LinearLayout.<span style="color: #006600;">LayoutParams</span><span style="color: #66cc66;">(</span>
+                LayoutParams.<span style="color: #006600;">WRAP_CONTENT</span>, 
+                LayoutParams.<span style="color: #006600;">WRAP_CONTENT</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+        mapView.<span style="color: #006600;">displayZoomControls</span><span style="color: #66cc66;">(</span><span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+    <span style="color: #66cc66;">}</span>
+&nbsp;
+    @Override
+    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #993333;">boolean</span> isRouteDisplayed<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+        <span style="color: #808080; font-style: italic;">// TODO Auto-generated method stub</span>
+        <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+<span style="color: #66cc66;">}</span></pre></div>
+<p>Basically, you obtain the <span class="geshifilter"><code class="geshifilter-text">MapView</code></span> instance on the activity, obtain its zoom controls and then add it to the <span class="geshifilter"><code class="geshifilter-text">LinearLayout</code></span> element you added to the activity earlier on. In the above case, the zoom control will be displayed at the bottom of the screen. When you now press <span class="geshifilter"><code class="geshifilter-text">F11</code></span> in Eclipse, you will see the zoom controls when you touch the map (see Figure 4).</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-4.png"><br>
+<strong>Figure 4</strong>  Using the zoom controls in Google Maps
+</p>
+<p>Using the zoom control, you can zoom in or out of a location by simply touching the "+ or "-" buttons on the screen.</p>
+<p>Alternatively, you can also programmatically zoom in or out of the map using the <span class="geshifilter"><code class="geshifilter-text">zoomIn()</code></span> and <span class="geshifilter"><code class="geshifilter-text">zoomOut()</code></span> methods from the <span class="geshifilter"><code class="geshifilter-text">MapController</code></span> class:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java"><span style="color: #000000; font-weight: bold;">package</span> net.<span style="color: #006600;">learn2develop</span>.<span style="color: #006600;">GoogleMaps</span><span style="color: #66cc66;">;</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">//...</span>
+<span style="color: #a1a100;">import android.os.Bundle;</span>
+<span style="color: #a1a100;">import android.view.KeyEvent;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MapsActivity <span style="color: #000000; font-weight: bold;">extends</span> MapActivity 
+<span style="color: #66cc66;">{</span>    
+    MapView mapView<span style="color: #66cc66;">;</span> 
+&nbsp;
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">boolean</span> onKeyDown<span style="color: #66cc66;">(</span><span style="color: #993333;">int</span> keyCode, <a href="http://www.google.com/search?hl=en&q=allinurl%3AKeyEvent+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">KeyEvent</span></a> event<span style="color: #66cc66;">)</span> 
+    <span style="color: #66cc66;">{</span>
+        MapController mc = mapView.<span style="color: #006600;">getController</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+        <span style="color: #b1b100;">switch</span> <span style="color: #66cc66;">(</span>keyCode<span style="color: #66cc66;">)</span> 
+        <span style="color: #66cc66;">{</span>
+            <span style="color: #b1b100;">case</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3AKeyEvent+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">KeyEvent</span></a>.<span style="color: #006600;">KEYCODE_3</span>:
+                mc.<span style="color: #006600;">zoomIn</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                <span style="color: #000000; font-weight: bold;">break</span><span style="color: #66cc66;">;</span>
+            <span style="color: #b1b100;">case</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3AKeyEvent+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">KeyEvent</span></a>.<span style="color: #006600;">KEYCODE_1</span>:
+                mc.<span style="color: #006600;">zoomOut</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                <span style="color: #000000; font-weight: bold;">break</span><span style="color: #66cc66;">;</span>
+        <span style="color: #66cc66;">}</span>
+        <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">super</span>.<span style="color: #006600;">onKeyDown</span><span style="color: #66cc66;">(</span>keyCode, event<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>    
+&nbsp;
+    <span style="color: #808080; font-style: italic;">/** Called when the activity is first created. */</span>
+    @Override
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">void</span> onCreate<span style="color: #66cc66;">(</span>Bundle savedInstanceState<span style="color: #66cc66;">)</span> 
+    <span style="color: #66cc66;">{</span>
+        <span style="color: #808080; font-style: italic;">//...</span>
+    <span style="color: #66cc66;">}</span>
+&nbsp;
+    @Override
+    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #993333;">boolean</span> isRouteDisplayed<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+        <span style="color: #808080; font-style: italic;">// TODO Auto-generated method stub</span>
+        <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+<span style="color: #66cc66;">}</span></pre></div>
+<p></p>
+<p>In the above code, when the user presses the number 3 on the keyboard the map will zoom in into the next level. Pressing number 1 will zoom out one level. </p>
+<h2>Changing Views of the Map</h2>
+<p>By default, the Google Maps displays in the map mode. If you wish to display the map in satellite view, you can use the <span class="geshifilter"><code class="geshifilter-text">setSatellite()</code></span> method of the <span class="geshifilter"><code class="geshifilter-text">MapView</code></span> class, like this:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java">        mapView.<span style="color: #006600;">setSatellite</span><span style="color: #66cc66;">(</span><span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span></pre></div>
+<p></p>
+<p>You can also display the map in street view, using the <span class="geshifilter"><code class="geshifilter-text">setStreetView()</code></span> method:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java">        mapView.<span style="color: #006600;">setStreetView</span><span style="color: #66cc66;">(</span><span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span></pre></div>
+<p>Figure 5 shows the Google Maps displayed in satellite and street views, respectively.
+</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-5.png"><br>
+<strong>Figure 5</strong>  Displaying Google Maps in satellite and street views
+</p>
+<h2>Displaying a Particular Location</h2>
+<p>Be default, the Google Maps displays the map of the United States when it is first loaded. However, you can also set the Google Maps to display a particular location. In this case, you can use the <span class="geshifilter"><code class="geshifilter-text">animateTo()</code></span> method of the <span class="geshifilter"><code class="geshifilter-text">MapController</code></span> class. </p>
+<p>The following code shows how this is done: </p>
+<div class="geshifilter">
+<pre class="geshifilter-java"><span style="color: #000000; font-weight: bold;">package</span> net.<span style="color: #006600;">learn2develop</span>.<span style="color: #006600;">GoogleMaps</span><span style="color: #66cc66;">;</span>
+&nbsp;
+<span style="color: #a1a100;">import com.google.android.maps.GeoPoint;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapActivity;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapController;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView.LayoutParams;</span>
+&nbsp;
+<span style="color: #a1a100;">import android.os.Bundle;</span>
+<span style="color: #a1a100;">import android.view.View;</span>
+<span style="color: #a1a100;">import android.widget.LinearLayout;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MapsActivity <span style="color: #000000; font-weight: bold;">extends</span> MapActivity 
+<span style="color: #66cc66;">{</span>    
+    MapView mapView<span style="color: #66cc66;">;</span> 
+    MapController mc<span style="color: #66cc66;">;</span>
+    GeoPoint p<span style="color: #66cc66;">;</span>
+&nbsp;
+    <span style="color: #808080; font-style: italic;">/** Called when the activity is first created. */</span>
+    @Override
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">void</span> onCreate<span style="color: #66cc66;">(</span>Bundle savedInstanceState<span style="color: #66cc66;">)</span> 
+    <span style="color: #66cc66;">{</span>
+        <span style="color: #000000; font-weight: bold;">super</span>.<span style="color: #006600;">onCreate</span><span style="color: #66cc66;">(</span>savedInstanceState<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        setContentView<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">layout</span>.<span style="color: #006600;">main</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+        mapView = <span style="color: #66cc66;">(</span>MapView<span style="color: #66cc66;">)</span> findViewById<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">id</span>.<span style="color: #006600;">mapView</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        LinearLayout zoomLayout = <span style="color: #66cc66;">(</span>LinearLayout<span style="color: #66cc66;">)</span>findViewById<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">id</span>.<span style="color: #006600;">zoom</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>  
+        <a href="http://www.google.com/search?hl=en&q=allinurl%3AView+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">View</span></a> zoomView = mapView.<span style="color: #006600;">getZoomControls</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+&nbsp;
+        zoomLayout.<span style="color: #006600;">addView</span><span style="color: #66cc66;">(</span>zoomView, 
+            <span style="color: #000000; font-weight: bold;">new</span> LinearLayout.<span style="color: #006600;">LayoutParams</span><span style="color: #66cc66;">(</span>
+                LayoutParams.<span style="color: #006600;">WRAP_CONTENT</span>, 
+                LayoutParams.<span style="color: #006600;">WRAP_CONTENT</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+        mapView.<span style="color: #006600;">displayZoomControls</span><span style="color: #66cc66;">(</span><span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+        mc = mapView.<span style="color: #006600;">getController</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        <a href="http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">String</span></a> coordinates<span style="color: #66cc66;">[</span><span style="color: #66cc66;">]</span> = <span style="color: #66cc66;">{</span><span style="color: #ff0000;">"1.352566007"</span>, <span style="color: #ff0000;">"103.78921587"</span><span style="color: #66cc66;">}</span><span style="color: #66cc66;">;</span>
+        <span style="color: #993333;">double</span> lat = <a href="http://www.google.com/search?hl=en&q=allinurl%3ADouble+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Double</span></a>.<span style="color: #006600;">parseDouble</span><span style="color: #66cc66;">(</span>coordinates<span style="color: #66cc66;">[</span><span style="color: #cc66cc;">0</span><span style="color: #66cc66;">]</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        <span style="color: #993333;">double</span> lng = <a href="http://www.google.com/search?hl=en&q=allinurl%3ADouble+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Double</span></a>.<span style="color: #006600;">parseDouble</span><span style="color: #66cc66;">(</span>coordinates<span style="color: #66cc66;">[</span><span style="color: #cc66cc;">1</span><span style="color: #66cc66;">]</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+        p = <span style="color: #000000; font-weight: bold;">new</span> GeoPoint<span style="color: #66cc66;">(</span>
+            <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">(</span>lat <span style="color: #66cc66;">*</span> 1E6<span style="color: #66cc66;">)</span>, 
+            <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">(</span>lng <span style="color: #66cc66;">*</span> 1E6<span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+        mc.<span style="color: #006600;">animateTo</span><span style="color: #66cc66;">(</span>p<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        mc.<span style="color: #006600;">setZoom</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">17</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+        mapView.<span style="color: #006600;">invalidate</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+&nbsp;
+    @Override
+    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #993333;">boolean</span> isRouteDisplayed<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+        <span style="color: #808080; font-style: italic;">// TODO Auto-generated method stub</span>
+        <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+<span style="color: #66cc66;">}</span></pre></div>
+<p></p>
+<p>In the above code, you first obtain a controller from the <span class="geshifilter"><code class="geshifilter-text">MapView</code></span> instance and assign it to a <span class="geshifilter"><code class="geshifilter-text">MapController</code></span> object (<span class="geshifilter"><code class="geshifilter-text">mc</code></span>). You use a <span class="geshifilter"><code class="geshifilter-text">GeoPoint</code></span> object to represent a geographical location. Note that for this class the latitude and longitude of a location are represented in micro degrees. This means that they are stored as integer values. For a latitude value of 40.747778, you need to multiply it by 1e6 to obtain 40747778.</p>
+<p>To navigate the map to a particular location, you can use the <span class="geshifilter"><code class="geshifilter-text">animateTo()</code></span> method of the <span class="geshifilter"><code class="geshifilter-text">MapController</code></span> class (an instance which is obtained from the MapView object). The <span class="geshifilter"><code class="geshifilter-text">setZoom()</code></span> method allows you to specify the zoom level in which the map is displayed. Figure 6 shows the Google Maps displaying the map of Singapore. </p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-6.png"><br>
+<strong>Figure 6</strong>  Navigating to a particular location on the map
+</p>
+<h2>Adding Markers</h2>
+<p>Very often, you may wish to add markers to the map to indicate places of interests. Let's see how you can do this in Android. First, create a GIF image containing a pushpin (see Figure 7) and copy it into the <span class="geshifilter"><code class="geshifilter-text">res/drawable</code></span> folder of the project. For best effect, you should make the background of the image transparent so that it does not block off parts of the map when the image is added to the map. </p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-7.png"><br>
+<strong>Figure 7</strong> Adding an image to the res/drawable folder
+</p>
+<p>To add a marker to the map, you first need to define a class that extends the <span class="geshifilter"><code class="geshifilter-text">Overlay</code></span> class:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java"><span style="color: #000000; font-weight: bold;">package</span> net.<span style="color: #006600;">learn2develop</span>.<span style="color: #006600;">GoogleMaps</span><span style="color: #66cc66;">;</span>
+&nbsp;
+<span style="color: #a1a100;">import java.util.List;</span>
+&nbsp;
+<span style="color: #a1a100;">import com.google.android.maps.GeoPoint;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapActivity;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapController;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView;</span>
+<span style="color: #a1a100;">import com.google.android.maps.Overlay;</span>
+<span style="color: #a1a100;">import com.google.android.maps.MapView.LayoutParams;</span>
+&nbsp;
+<span style="color: #a1a100;">import android.graphics.Bitmap;</span>
+<span style="color: #a1a100;">import android.graphics.BitmapFactory;</span>
+<span style="color: #a1a100;">import android.graphics.Canvas;</span>
+<span style="color: #a1a100;">import android.graphics.Point;</span>
+<span style="color: #a1a100;">import android.os.Bundle;</span>
+<span style="color: #a1a100;">import android.view.View;</span>
+<span style="color: #a1a100;">import android.widget.LinearLayout;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MapsActivity <span style="color: #000000; font-weight: bold;">extends</span> MapActivity 
+<span style="color: #66cc66;">{</span>    
+    MapView mapView<span style="color: #66cc66;">;</span> 
+    MapController mc<span style="color: #66cc66;">;</span>
+    GeoPoint p<span style="color: #66cc66;">;</span>
+&nbsp;
+    <span style="color: #000000; font-weight: bold;">class</span> MapOverlay <span style="color: #000000; font-weight: bold;">extends</span> com.<span style="color: #006600;">google</span>.<span style="color: #006600;">android</span>.<span style="color: #006600;">maps</span>.<span style="color: #006600;">Overlay</span>
+    <span style="color: #66cc66;">{</span>
+        @Override
+        <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">boolean</span> draw<span style="color: #66cc66;">(</span><a href="http://www.google.com/search?hl=en&q=allinurl%3ACanvas+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Canvas</span></a> canvas, MapView mapView, 
+        <span style="color: #993333;">boolean</span> shadow, <span style="color: #993333;">long</span> when<span style="color: #66cc66;">)</span> 
+        <span style="color: #66cc66;">{</span>
+            <span style="color: #000000; font-weight: bold;">super</span>.<span style="color: #006600;">draw</span><span style="color: #66cc66;">(</span>canvas, mapView, shadow<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>                   
+&nbsp;
+            <span style="color: #808080; font-style: italic;">//---translate the GeoPoint to screen pixels---</span>
+            <a href="http://www.google.com/search?hl=en&q=allinurl%3APoint+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Point</span></a> screenPts = <span style="color: #000000; font-weight: bold;">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3APoint+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Point</span></a><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+            mapView.<span style="color: #006600;">getProjection</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">toPixels</span><span style="color: #66cc66;">(</span>p, screenPts<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+            <span style="color: #808080; font-style: italic;">//---add the marker---</span>
+            Bitmap bmp = BitmapFactory.<span style="color: #006600;">decodeResource</span><span style="color: #66cc66;">(</span>
+                getResources<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>, R.<span style="color: #006600;">drawable</span>.<span style="color: #006600;">pushpin</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>            
+            canvas.<span style="color: #006600;">drawBitmap</span><span style="color: #66cc66;">(</span>bmp, screenPts.<span style="color: #006600;">x</span>, screenPts.<span style="color: #006600;">y</span><span style="color: #cc66cc;">-50</span>, <span style="color: #000000; font-weight: bold;">null</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>         
+            <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">;</span>
+        <span style="color: #66cc66;">}</span>
+    <span style="color: #66cc66;">}</span> 
+&nbsp;
+    <span style="color: #808080; font-style: italic;">/** Called when the activity is first created. */</span>
+    @Override
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">void</span> onCreate<span style="color: #66cc66;">(</span>Bundle savedInstanceState<span style="color: #66cc66;">)</span> 
+    <span style="color: #66cc66;">{</span>
+        <span style="color: #808080; font-style: italic;">//...</span>
+    <span style="color: #66cc66;">}</span>
+&nbsp;
+    @Override
+    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #993333;">boolean</span> isRouteDisplayed<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+        <span style="color: #808080; font-style: italic;">// TODO Auto-generated method stub</span>
+        <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span>
+<span style="color: #66cc66;">}</span></pre></div>
+<p></p>
+<p>In the <span class="geshifilter"><code class="geshifilter-text">MapOverlay</code></span> class that you have defined, override the <span class="geshifilter"><code class="geshifilter-text">draw()</code></span> method so that you can draw the pushpin image on the map. In particular, note that you need to translate the geographical location (represented by a <span class="geshifilter"><code class="geshifilter-text">GeoPoint</code></span> object, p) into screen coordinates. </p>
+<p>As you want the pointed tip of the push pin to indicate the position of the location, you would need to deduct the height of the image (which is 50 pixels) from the y-coordinate of the point (see Figure 8) and draw the image at that location.</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-8.png"><br>
+<strong>Figure 8</strong> Adding an image to the map
+</p>
+<p>To add the marker, create an instance of the <span class="geshifilter"><code class="geshifilter-text">MapOverlap</code></span> class and add it to the list of overlays available on the <span class="geshifilter"><code class="geshifilter-text">MapView</code></span> object:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java">    @Override
+    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">void</span> onCreate<span style="color: #66cc66;">(</span>Bundle savedInstanceState<span style="color: #66cc66;">)</span> 
+    <span style="color: #66cc66;">{</span>
+        <span style="color: #000000; font-weight: bold;">super</span>.<span style="color: #006600;">onCreate</span><span style="color: #66cc66;">(</span>savedInstanceState<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        setContentView<span style="color: #66cc66;">(</span>R.<span style="color: #006600;">layout</span>.<span style="color: #006600;">main</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+        <span style="color: #808080; font-style: italic;">//...</span>
+&nbsp;
+        mc.<span style="color: #006600;">animateTo</span><span style="color: #66cc66;">(</span>p<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        mc.<span style="color: #006600;">setZoom</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">17</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+&nbsp;
+        <span style="color: #808080; font-style: italic;">//---Add a location marker---</span>
+        MapOverlay mapOverlay = <span style="color: #000000; font-weight: bold;">new</span> MapOverlay<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        List<span style="color: #66cc66;">&lt;</span>Overlay<span style="color: #66cc66;">&gt;</span> listOfOverlays = mapView.<span style="color: #006600;">getOverlays</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        listOfOverlays.<span style="color: #006600;">clear</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        listOfOverlays.<span style="color: #006600;">add</span><span style="color: #66cc66;">(</span>mapOverlay<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>        
+&nbsp;
+        mapView.<span style="color: #006600;">invalidate</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+    <span style="color: #66cc66;">}</span></pre></div>
+<p>Figure 9 shows how the pushpin looks like when added to the map.
+</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-9.png"><br>
+<strong>Figure 9</strong> Adding a marker to the map
+</p>
+<h2>Getting the Location that was touched</h2>
+<p>After using Google Maps for a while, you may wish to know the latitude and longitude of a location corresponding to the position on the screen that you have just touched. Knowing this information is very useful as you can find out the address of a location, a process known as Geocoding (you will see how this is done in the next section). </p>
+<p>If you have added an overlay to the map, you can override the onTouchEvent() method within the <span class="geshifilter"><code class="geshifilter-text">Overlay</code></span> class. This method is fired every time the user touches the map. This method has two parameters - <span class="geshifilter"><code class="geshifilter-text">MotionEvent</code></span> and <span class="geshifilter"><code class="geshifilter-text">MapView</code></span>. Using the <span class="geshifilter"><code class="geshifilter-text">MotionEvent</code></span> parameter, you can know if the user has lifted his finger from the screen using the <span class="geshifilter"><code class="geshifilter-text">getAction()</code></span> method. In the following code, if the user has touched and then lifted his finger, you will display the latitude and longitude of the location touched:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java">    <span style="color: #000000; font-weight: bold;">class</span> MapOverlay <span style="color: #000000; font-weight: bold;">extends</span> com.<span style="color: #006600;">google</span>.<span style="color: #006600;">android</span>.<span style="color: #006600;">maps</span>.<span style="color: #006600;">Overlay</span>
+    <span style="color: #66cc66;">{</span>
+        @Override
+        <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">boolean</span> draw<span style="color: #66cc66;">(</span><a href="http://www.google.com/search?hl=en&q=allinurl%3ACanvas+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Canvas</span></a> canvas, MapView mapView, 
+        <span style="color: #993333;">boolean</span> shadow, <span style="color: #993333;">long</span> when<span style="color: #66cc66;">)</span> 
+        <span style="color: #66cc66;">{</span>
+           <span style="color: #808080; font-style: italic;">//...</span>
+        <span style="color: #66cc66;">}</span>
+&nbsp;
+        @Override
+        <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">boolean</span> onTouchEvent<span style="color: #66cc66;">(</span>MotionEvent event, MapView mapView<span style="color: #66cc66;">)</span> 
+        <span style="color: #66cc66;">{</span>   
+            <span style="color: #808080; font-style: italic;">//---when user lifts his finger---</span>
+            <span style="color: #b1b100;">if</span> <span style="color: #66cc66;">(</span>event.<span style="color: #006600;">getAction</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> == <span style="color: #cc66cc;">1</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>                
+                GeoPoint p = mapView.<span style="color: #006600;">getProjection</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">fromPixels</span><span style="color: #66cc66;">(</span>
+                    <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> event.<span style="color: #006600;">getX</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>,
+                    <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> event.<span style="color: #006600;">getY</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                    Toast.<span style="color: #006600;">makeText</span><span style="color: #66cc66;">(</span>getBaseContext<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>, 
+                        p.<span style="color: #006600;">getLatitudeE6</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> / 1E6 + <span style="color: #ff0000;">","</span> + 
+                        p.<span style="color: #006600;">getLongitudeE6</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> /1E6 , 
+                        Toast.<span style="color: #006600;">LENGTH_SHORT</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">show</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+            <span style="color: #66cc66;">}</span>                            
+            <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+        <span style="color: #66cc66;">}</span>        
+    <span style="color: #66cc66;">}</span></pre></div>
+<p>Figure 10 shows this in action.
+ </p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-10.png"><br>
+<strong>Figure 10</strong> Displaying the latitude and longitude of a point touched on the map
+</p>
+<h2>Geocoding and Reverse Geocoding</h2>
+<p>If you know the latitude and longitude of a location, you can find out its address using a process known as Geocoding.  Google Maps in Android supports this via the <span class="geshifilter"><code class="geshifilter-text">Geocoder</code></span> class. The following code shows how you can find out the address of a location you have just touched using the <span class="geshifilter"><code class="geshifilter-text">getFromLocation()</code></span> method:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java">    <span style="color: #000000; font-weight: bold;">class</span> MapOverlay <span style="color: #000000; font-weight: bold;">extends</span> com.<span style="color: #006600;">google</span>.<span style="color: #006600;">android</span>.<span style="color: #006600;">maps</span>.<span style="color: #006600;">Overlay</span>
+    <span style="color: #66cc66;">{</span>
+        @Override
+        <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">boolean</span> draw<span style="color: #66cc66;">(</span><a href="http://www.google.com/search?hl=en&q=allinurl%3ACanvas+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Canvas</span></a> canvas, MapView mapView, 
+        <span style="color: #993333;">boolean</span> shadow, <span style="color: #993333;">long</span> when<span style="color: #66cc66;">)</span> 
+        <span style="color: #66cc66;">{</span>
+          <span style="color: #808080; font-style: italic;">//...</span>
+        <span style="color: #66cc66;">}</span>
+&nbsp;
+        @Override
+        <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #993333;">boolean</span> onTouchEvent<span style="color: #66cc66;">(</span>MotionEvent event, MapView mapView<span style="color: #66cc66;">)</span> 
+        <span style="color: #66cc66;">{</span>   
+            <span style="color: #808080; font-style: italic;">//---when user lifts his finger---</span>
+            <span style="color: #b1b100;">if</span> <span style="color: #66cc66;">(</span>event.<span style="color: #006600;">getAction</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> == <span style="color: #cc66cc;">1</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>                
+                GeoPoint p = mapView.<span style="color: #006600;">getProjection</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">fromPixels</span><span style="color: #66cc66;">(</span>
+                    <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> event.<span style="color: #006600;">getX</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>,
+                    <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> event.<span style="color: #006600;">getY</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+                Geocoder geoCoder = <span style="color: #000000; font-weight: bold;">new</span> Geocoder<span style="color: #66cc66;">(</span>
+                    getBaseContext<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>, <a href="http://www.google.com/search?hl=en&q=allinurl%3ALocale+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Locale</span></a>.<span style="color: #006600;">getDefault</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #66cc66;">{</span>
+                    List<span style="color: #66cc66;">&lt;</span>Address<span style="color: #66cc66;">&gt;</span> addresses = geoCoder.<span style="color: #006600;">getFromLocation</span><span style="color: #66cc66;">(</span>
+                        p.<span style="color: #006600;">getLatitudeE6</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>  / 1E6, 
+                        p.<span style="color: #006600;">getLongitudeE6</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> / 1E6, <span style="color: #cc66cc;">1</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+&nbsp;
+                    <a href="http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">String</span></a> add = <span style="color: #ff0000;">""</span><span style="color: #66cc66;">;</span>
+                    <span style="color: #b1b100;">if</span> <span style="color: #66cc66;">(</span>addresses.<span style="color: #006600;">size</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">&gt;</span> <span style="color: #cc66cc;">0</span><span style="color: #66cc66;">)</span> 
+                    <span style="color: #66cc66;">{</span>
+                        <span style="color: #b1b100;">for</span> <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span> i=<span style="color: #cc66cc;">0</span><span style="color: #66cc66;">;</span> i<span style="color: #66cc66;">&lt;</span>addresses.<span style="color: #006600;">get</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">0</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">getMaxAddressLineIndex</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span> 
+                             i++<span style="color: #66cc66;">)</span>
+                           add += addresses.<span style="color: #006600;">get</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">0</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">getAddressLine</span><span style="color: #66cc66;">(</span>i<span style="color: #66cc66;">)</span> + <span style="color: #ff0000;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #66cc66;">;</span>
+                    <span style="color: #66cc66;">}</span>
+&nbsp;
+                    Toast.<span style="color: #006600;">makeText</span><span style="color: #66cc66;">(</span>getBaseContext<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>, add, Toast.<span style="color: #006600;">LENGTH_SHORT</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">show</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                <span style="color: #66cc66;">}</span>
+                <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #66cc66;">(</span><a href="http://www.google.com/search?hl=en&q=allinurl%3AIOException+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">IOException</span></a> e<span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>                
+                    e.<span style="color: #006600;">printStackTrace</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                <span style="color: #66cc66;">}</span>   
+                <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">true</span><span style="color: #66cc66;">;</span>
+            <span style="color: #66cc66;">}</span>
+            <span style="color: #b1b100;">else</span>                
+                <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #66cc66;">;</span>
+        <span style="color: #66cc66;">}</span>        
+    <span style="color: #66cc66;">}</span></pre></div>
+<p>Figure 11 shows the above code in action.
+</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-11.png"><br>
+<strong>Figure 11</strong> Performing Geocoding in Google Maps
+</p>
+<p>If you know the address of a location but want to know its latitude and longitude, you can do so via reverse-Geocoding. Again, you can use the <span class="geshifilter"><code class="geshifilter-text">Geocoder</code></span> class for this purpose. The following code shows how you can find the exact location of the Empire State Building by using the <span class="geshifilter"><code class="geshifilter-text">getFromLocationName()</code></span> method:</p>
+<div class="geshifilter">
+<pre class="geshifilter-java">        Geocoder geoCoder = <span style="color: #000000; font-weight: bold;">new</span> Geocoder<span style="color: #66cc66;">(</span><span style="color: #000000; font-weight: bold;">this</span>, <a href="http://www.google.com/search?hl=en&q=allinurl%3ALocale+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">Locale</span></a>.<span style="color: #006600;">getDefault</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>    
+        <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #66cc66;">{</span>
+            List<span style="color: #66cc66;">&lt;</span>Address<span style="color: #66cc66;">&gt;</span> addresses = geoCoder.<span style="color: #006600;">getFromLocationName</span><span style="color: #66cc66;">(</span>
+                <span style="color: #ff0000;">"empire state building"</span>, <span style="color: #cc66cc;">5</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+            <a href="http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">String</span></a> add = <span style="color: #ff0000;">""</span><span style="color: #66cc66;">;</span>
+            <span style="color: #b1b100;">if</span> <span style="color: #66cc66;">(</span>addresses.<span style="color: #006600;">size</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">&gt;</span> <span style="color: #cc66cc;">0</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+                p = <span style="color: #000000; font-weight: bold;">new</span> GeoPoint<span style="color: #66cc66;">(</span>
+                        <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">(</span>addresses.<span style="color: #006600;">get</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">0</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">getLatitude</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">*</span> 1E6<span style="color: #66cc66;">)</span>, 
+                        <span style="color: #66cc66;">(</span><span style="color: #993333;">int</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">(</span>addresses.<span style="color: #006600;">get</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">0</span><span style="color: #66cc66;">)</span>.<span style="color: #006600;">getLongitude</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">*</span> 1E6<span style="color: #66cc66;">)</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+                mc.<span style="color: #006600;">animateTo</span><span style="color: #66cc66;">(</span>p<span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>    
+                mapView.<span style="color: #006600;">invalidate</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+            <span style="color: #66cc66;">}</span>    
+        <span style="color: #66cc66;">}</span> <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #66cc66;">(</span><a href="http://www.google.com/search?hl=en&q=allinurl%3AIOException+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span style="color: #aaaadd; font-weight: bold;">IOException</span></a> e<span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+            e.<span style="color: #006600;">printStackTrace</span><span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">;</span>
+        <span style="color: #66cc66;">}</span></pre></div>
+<p></p>
+<p>Once the location is found, the above code navigates the map to the location. Figure 12 shows the code in action.</p>
+<p class="image-caption"><img src="./GoogleMapsAndroid_files/and-goog-12.png"><br>
+<strong>Figure 12</strong> Navigating to the Empire State Building
+</p>
+<h2>Summary</h2>
+<p>In this article, you have learnt a few tricks for the Google Maps in Android. Using Google Maps, there are many interesting projects you can work on, such as geo-tagging, geo-tracking, etc. If you have cool ideas on building cool location-based services, share with us in the comments box below. Have fun!</p>
+<!-- google_ad_section_end -->
+
+        <br class="clear">
+</div>
+</div>
+    
+      <div class="section author ">
+        <h3>Related</h3>
+        <div class="inside">
+
+          <div class="tag-label">Content:</div>
+            <div id="content-tags">
+              <li class="related-links"><a href="http://mobiforge.com/developing/story/displaying-status-bar-notifications-android">Displaying Status Bar Notifications in Android</a></li><li class="related-links"><a href="http://mobiforge.com/developing/story/preserving-user-preferences-android-applications">Preserving User Preferences in Android Applications</a></li><li class="related-links"><a href="http://mobiforge.com/designing/story/building-location-service-apps-windows-phone-7">Building Location Service Apps in Windows Phone 7</a></li><li class="related-links"><a href="http://mobiforge.com/developing/story/introduction-windows-phone-7-development">Introduction to Windows Phone 7 Development</a></li><li class="related-links"><a href="http://mobiforge.com/developing/story/location-iphone-web-apps">Location in iPhone Web Apps</a></li>            </div>
+
+
+          <div class="tag-label">Tags:</div>
+            <div id="content-tags">
+              <ul class="links inline"><li class="first taxonomy_term_83"><a href="http://mobiforge.com/developing" rel="tag" title="This section contains content related to mobile web development" class="taxonomy_term_83">Developing</a></li>
+<li class="taxonomy_term_87"><a href="http://mobiforge.com/developers" rel="tag" title="" class="taxonomy_term_87">Developers</a></li>
+<li class="taxonomy_term_230"><a href="http://mobiforge.com/android" rel="tag" title="" class="taxonomy_term_230">Android</a></li>
+<li class="taxonomy_term_114"><a href="http://mobiforge.com/location-based-services" rel="tag" title="" class="taxonomy_term_114">Location Based Services</a></li>
+<li class="taxonomy_term_139"><a href="http://mobiforge.com/java" rel="tag" title="" class="taxonomy_term_139">Java</a></li>
+<li class="last taxonomy_term_147"><a href="http://mobiforge.com/xml" rel="tag" title="" class="taxonomy_term_147">XML</a></li>
+</ul>            </div>
+
+                      </div>
+        </div>
+    
+
+          <div class="section author clearfix">
+        <h3>Posted by weimenglee 2 years 31 weeks ago</h3>
+        <div class="inside">
+          <div class="picture"><img src="./GoogleMapsAndroid_files/picture-25373.jpg" alt="weimenglee&#39;s picture" title="weimenglee&#39;s picture"></div>          <p class="last"></p><p>Wei-Meng Lee is a technologist and the founder of Developer Learning Solutions (<a href="http://www.learn2develop.net/">http://www.learn2develop.net</a>), a company focusing on hands-on training on the latest technology. Wei-Meng specializes in mobile technologies and has written several books on .NET, VB, C#, and .NET Compact Framework and is currently working on an Android book for Wrox. Contact Wei-Meng Lee at <script type="text/javascript">eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%77%65%69%6d%65%6e%67%6c%65%65%40%6c%65%61%72%6e%32%64%65%76%65%6c%6f%70%2e%6e%65%74%22%3e%77%65%69%6d%65%6e%67%6c%65%65%40%6c%65%61%72%6e%32%64%65%76%65%6c%6f%70%2e%6e%65%74%3c%2f%61%3e%27%29%3b'))</script><a href="mailto:weimenglee@learn2develop.net">weimenglee@learn2develop.net</a>.</p>
+<p></p>
+        </div>
+      </div>
+    
+  </div>
+
+<div class="breadcrumb clearfix">
+                   <ul><li class="last"><a href="">Comments</a></li></ul>
+                 </div>
+                 <div class="screen clearfix"><div id="comments"><a id="comment-5474"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5474">Posted by </a>featureBlend 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Thanks Wei-Meng, it took me a while to work this out, but worth the effort.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5682"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5682">Posted by </a>arnouf 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Using Android 1.5 the zoom control is automatically added and manage using<br>
+MapView.setBuiltInZoomControls(true)</p>
+<p>The Linearlayout to add the zoomControl is not required (zoomControl is a deprecated method)</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5799"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5799">Posted by </a>neha 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Awesome tutorial. However, I'm not able to get it to work. I keep getting the following error even when I compile it the code in Google API</p>
+<div class="geshifilter">
+<pre class="geshifilter-text">D/dalvikvm(  609): GC freed 2803 objects / 171408 bytes in 214ms
+I/Process (  751): Sending signal. PID: 751 SIG: 9
+I/ActivityManager(  567): Process edu.blah (pid 751) has died.
+W/InputManagerService(  567): Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@43740c48
+I/ActivityManager(  567): Starting activity: Intent { action=android.intent.action.MAIN categories={android.intent.category.LAUNCHER} flags=0x10200000
+ comp={edu.blah/edu.blah.MyMapsActivity} }
+I/ActivityManager(  567): Start proc edu.cmu.android.bmo for activity edu.cmu.android.bmo/.MyMapsActivity: pid=758 uid=10020 gids={}
+I/jdwp    (  758): received file descriptor 20 from ADB
+E/jdwp    (  758): Failed sending req to debugger: Broken pipe (-1 of 27)
+E/jdwp    (  758): Failed sending reply to debugger: Broken pipe
+I/dalvikvm(  758): Debugger has detached; object registry had 2 entries
+W/dalvikvm(  758): Class resolved by unexpected DEX: Ledu/blah/MyMapsActivity;(0x43734570):0x18fbc0 ref [Lcom/google/android/maps/MapActivi
+ty;] Lcom/google/android/maps/MapActivity;(0x43734570):0x185c58
+W/dalvikvm(  758): Unable to resolve superclass of Ledu/cmu/android/bmo/MyMapsActivity; (40)
+W/dalvikvm(  758): Link of class 'Ledu/blah/MyMapsActivity;' failed
+D/AndroidRuntime(  758): Shutting down VM
+W/dalvikvm(  758): threadid=3: thread exiting with uncaught exception (group=0x4000fe70)
+E/AndroidRuntime(  758): Uncaught handler: thread main exiting due to uncaught exception
+E/AndroidRuntime(  758): java.lang.IllegalAccessError: cross-loader access from pre-verified class
+E/AndroidRuntime(  758):        at dalvik.system.DexFile.defineClass(Native Method)
+E/AndroidRuntime(  758):        at dalvik.system.DexFile.loadClass(DexFile.java:193)
+E/AndroidRuntime(  758):        at dalvik.system.PathClassLoader.findClass(PathClassLoader.java:203)
+E/AndroidRuntime(  758):        at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+E/AndroidRuntime(  758):        at java.lang.ClassLoader.loadClass(ClassLoader.java:532)
+E/AndroidRuntime(  758):        at android.app.Instrumentation.newActivity(Instrumentation.java:1097)
+E/AndroidRuntime(  758):        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2186)
+E/AndroidRuntime(  758):        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2284)
+E/AndroidRuntime(  758):        at android.app.ActivityThread.access$1800(ActivityThread.java:112)
+E/AndroidRuntime(  758):        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1692)
+E/AndroidRuntime(  758):        at android.os.Handler.dispatchMessage(Handler.java:99)
+E/AndroidRuntime(  758):        at android.os.Looper.loop(Looper.java:123)
+E/AndroidRuntime(  758):        at android.app.ActivityThread.main(ActivityThread.java:3948)
+E/AndroidRuntime(  758):        at java.lang.reflect.Method.invokeNative(Native Method)
+E/AndroidRuntime(  758):        at java.lang.reflect.Method.invoke(Method.java:521)
+E/AndroidRuntime(  758):        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:782)
+E/AndroidRuntime(  758):        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:540)
+E/AndroidRuntime(  758):        at dalvik.system.NativeStart.main(Native Method)
+I/Process (  567): Sending signal. PID: 758 SIG: 3
+I/dalvikvm(  758): threadid=7: reacting to signal 3
+I/dalvikvm(  758): Wrote stack trace to '/data/anr/traces.txt'
+I/jdwp    (  758): received file descriptor 26 from ADB
+W/ActivityManager(  567): Launch timeout has expired, giving up wake lock!
+W/ActivityManager(  567): Activity idle timeout for HistoryRecord{43735178 {edu.blah/edu.blah.MyMapsActivity}}
+D/dalvikvm(  609): GC freed 1862 objects / 102376 bytes in 202ms
+I/Process (  758): Sending signal. PID: 758 SIG: 9
+I/ActivityManager(  567): Process edu.blah (pid 758) has died.</pre></div>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5811"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5811">Posted by </a>katalyte 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello<br>
+I try to develope this tutorial but the application load but i cannot see the map (all i see is a grid). I have follow the all intructions with permission and apikey but still see nothing!</p>
+<p>I am using Eclipse 3.4.2 Android DDMS &amp; android developer tools 0.9.1</p>
+<p>what i make wrong?</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5815"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5815">Posted by </a>naga_vejju 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi,</p>
+<p>I am getting below error, could you please help me out</p>
+<p><img src="http://172.21.8.21:8080/mediae2ewap/imgs/mapserror.bmp" alt="" class="bb-image"></p>
+<p>Thanks,<br>
+Nagesh</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5825"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5825">Posted by </a>katalyte 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi Naga_vejju</p>
+<p>What kind of error .... I can' t see the picture!<br>
+send again</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5858"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5858">Posted by </a>jaimik_ds 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>hi i have a problem that donot display the map in my emulator.</p>
+<p>Logcat output excerpt:</p>
+<p>06-23 03:04:20.064: DEBUG/SystemClock(90): Setting time of day to sec=1245751447<br>
+06-23 03:04:07.314: WARN/SystemClock(90): Unable to set rtc to 1245751447: Invalid argument<br>
+06-23 03:04:07.984: DEBUG/ActivityManager(51): Uninstalling process net.learn2develop.GoogleMaps<br>
+06-23 03:04:07.984: INFO/ActivityManager(51): Starting activity: Intent { flags=0x10000000 comp={net.learn2develop.GoogleMaps/net.learn2develop.GoogleMaps.MapsActivity} }<br>
+06-23 03:04:08.006: WARN/ActivityManager(51): Permission Denial: starting Intent { flags=0x10000000 comp={net.learn2develop.GoogleMaps/net.learn2develop.GoogleMaps.MapsActivity} } from null (pid=-1, uid=-1) requires android.permission.INTERNET<br>
+06-23 03:04:08.016: DEBUG/AndroidRuntime(150): Shutting down VM<br>
+06-23 03:04:08.016: WARN/dalvikvm(150): threadid=3: thread exiting with uncaught exception (group=0x40010e28)<br>
+06-23 03:04:08.016: ERROR/AndroidRuntime(150): Uncaught handler: thread main exiting due to uncaught exception<br>
+06-23 03:04:08.016: ERROR/AndroidRuntime(150): *** EXCEPTION IN SYSTEM PROCESS.  System will crash.<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150): java.lang.SecurityException: Permission Denial: starting Intent { flags=0x10000000 comp={net.learn2develop.GoogleMaps/net.learn2develop.GoogleMaps.MapsActivity} } from null (pid=-1, uid=-1) requires android.permission.INTERNET<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at android.os.Parcel.readException(Parcel.java:1234)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at android.os.Parcel.readException(Parcel.java:1222)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at android.app.ActivityManagerProxy.startActivity(ActivityManagerNative.java:998)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at com.android.commands.am.Am.runStart(Am.java:197)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at com.android.commands.am.Am.run(Am.java:73)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at com.android.commands.am.Am.main(Am.java:51)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at com.android.internal.os.RuntimeInit.finishInit(Native Method)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:186)<br>
+06-23 03:04:08.065: ERROR/AndroidRuntime(150):     at dalvik.system.NativeStart.main(Native Method)<br>
+06-23 03:04:08.075: ERROR/JavaBinder(150): Unknown binder error code. 0xfffffff7<br>
+06-23 03:04:08.094: ERROR/AndroidRuntime(150): Crash logging skipped, no checkin service</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-5877"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-5877">Posted by </a>katalyte 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>go to the manifest.xml &amp; add Permission Internet...</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6005"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6005">Posted by </a>agarwalsonal 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi,<br>
+I am successfully able to fetch the address of the street using the Geocoder function by providing the longitude and latitude of the street point of view.</p>
+<p>Please let me know the way to get the Image view of the Street. In case of GoogleMaps, if I click on a Street (whose image view is available), it shows the Address of the nearest point of the street with the available Image view.</p>
+<p>Please let me know the code or the class that helps in fetching the Image of the Street.</p>
+<p>Waiting for the reply,<br>
+With Regards,<br>
+Sonal</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6040"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6040">Posted by </a>aramsvivek 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Thanks....The tutorial is simply good.It works fine.</p>
+<p>For Android1.5(Developers):</p>
+<p>Just Create avd for google API(Android1.5)....</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6055"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6055">Posted by </a>LifeF 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>i saw my home from HCMC, thanks u very much, mr Lee, :))!</p>
+        MrQ
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6125"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6125">Posted by </a>cawa 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>many thanks for the tutorial,<br>
+but I have a little more question for you: <span style="font-weight:bold">can I change the pin position just by touching the screen?</span></p>
+<p>the new position will correspond to the point on the screen that I have just touched.</p>
+<p>i tried the code:</p>
+<div class="geshifilter">
+<pre class="geshifilter-text">    class MapOverlay extends com.google.android.maps.Overlay {
+        @Override
+        public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
+            super.draw(canvas, mapView, shadow);                   
+&nbsp;
+            Point screenPts = new Point();
+            mapView.getProjection().toPixels(p, screenPts);
+&nbsp;
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.pin);            
+            canvas.drawBitmap(bmp, screenPts.x, screenPts.y-48, null);         
+            return true;
+        }
+&nbsp;
+        @Override
+        public boolean onTouchEvent(MotionEvent event, MapView mapView) {   
+            if (event.getAction() == 1) {
+        	GeoPoint p = mapView.getProjection().fromPixels((int) event.getX(), (int) event.getY());
+&nbsp;
+   		<span style="font-weight:bold">mc.animateTo(p);
+&nbsp;
+	      MapOverlay mapOverlay = new MapOverlay();
+	      listOfOverlays = mapView.getOverlays();
+	      listOfOverlays.clear();
+	      listOfOverlays.add(mapOverlay);</span>
+&nbsp;
+                return true;            
+            } else return false;
+        }  
+    }</pre></div>
+<p>but nothing happened: while the map is mooving its center on the new coord, the pin still remain in the initial position.</p>
+<p>could you please help me?<br>
+thanks!</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6322"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6322">Posted by </a>zxy861114 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>hi CAWA,<br>
+  The code can achieve your aim.<br>
+  @Override<br>
+	public boolean onTouchEvent(MotionEvent event, MapView mapView) {<br>
+	            if (event.getAction() == 1) {<br>
+	        	p = mapView.getProjection().fromPixels((int) event.getX(), (int) event.getY());<br>
+	        	mc.animateTo(p);<br>
+	               return true;<br>
+	            } else return false;<br>
+	        } </p>
+<p>In your code ,remove the GeoPoint.You can see the draw function.It draw the canvas with p[mapView.getProjection().toPixels(p, screenPts);]. Also remove MapOverlay .It is not necessary.In its overlay list,it have the MapOverlay.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6350"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6350">Posted by </a>sing522 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>3Q~~~<br>
+^_^</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6372"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6372">Posted by </a>msalmanq 2 years ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>One of the best tutorial, I have found on the internet for using Google Maps on Android OS.<br>
+Salman</p>
+        Salman
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6386"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6386">Posted by </a>jhm15217 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>I've noticed at least one app, PlaceFinder, feeding an http string to the map applicatoin. How does that work?</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6387"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6387">Posted by </a>jhm15217 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>For example, feeding<br>
+<a href="http://maps.google.com/maps?saddr=1788+Oak+Creek+Dr+94304+to:1600+Amphitheatre+Parkway+94043">http://maps.google.com/maps?saddr=1788+Oak+Creek+Dr+94304+to:1600+Amphitheatre+Parkway+94043</a><br>
+to the browser gets me directions, but feeding it as part of an Android intent causes the maps app enter direction-finding mode but it misses the "to:" part.</p>
+<p>So whoever is parsing the url for my Android app is out of sync with the web service.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6422"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6422">Posted by </a>aamiryaseen 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Great Article,<br>
+I am having two problem when implementing my Android Map based application, can you help?<br>
+1- How can I zoom map, so that all the added overlays are visible?<br>
+2- how can I show information in bubble, when use select one of the added overlay (in this case icon).?</p>
+<p>Thanks,<br>
+Aamir</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6555"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6555">Posted by </a>mrSimons 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Thanks Wei Meng your tutorials are a real gem!</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6656"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6656">Posted by </a>ruadhan 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>If you can't find the  <span class="geshifilter"><code class="geshifilter-text">debug.keystore</code></span> file located in the default location mentioned in the article, look in the <span class="geshifilter"><code class="geshifilter-text">C:\Documents and Settings\&lt;username&gt;\.android</code></span> folder</p>
+        Ruadhan O'Donoghue<br>dotMobi
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6718"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6718">Posted by </a>vt515 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Wei Meng,</p>
+<p>I'm getting this error message when tired to follow the steps of this tutorial.</p>
+<p>Installation error: INSTALL_FAILED_MISSING_SHARED_LIBRARY</p>
+<p>The map will not load.  I am using Eclipse with the Android Plugin.</p>
+<p>Thank you for your time,<br>
+James</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6829"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6829">Posted by </a>sam82t 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello ,<br>
+   I have followed all the new instructions preoperly but I am not able to see the Map, only the grids are visible.<br>
+Any solution fo this problem</p>
+<p>Sam</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6838"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6838">Posted by </a>rd42 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Thanks for sharing the code.<br>
+I'm stumped.  I'm using Eclipse and I copied and pasted the AndroidManifest directly into mine and it won't compile because the <span class="geshifilter"><code class="geshifilter-text">&lt;/xml&gt;</code></span> tag at the end says, it's missing its' start tag and there is a start tag.  </p>
+<p>Any ideas?</p>
+<p>Here's my manifest:</p>
+<div class="geshifilter">
+<pre class="geshifilter-text">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="net.learn2develop.GooglMaps"
+	android:versionCode="1"
+	android:versionName="1.0.0"&gt;
+	&lt;application android:icon="@drawable/icon" android:label="@string/app_name"&gt;
+		&lt;uses-library android:name="com.google.android.maps" /&gt;
+		&lt;activity android:name=".MapsActivity"
+				android:label="@string/app_name"&gt;
+				&lt;intent-filter&gt;
+					&lt;action android:name="android.intent.action.MAIN" /&gt;
+					&lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+				&lt;/intent-filter&gt;
+				&lt;/activity&gt;
+	&lt;/application&gt;
+	&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+	&lt;/manifest&gt;
+&lt;/xml&gt;</pre></div>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6861"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6861">Posted by </a>avdhesh 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi, </p>
+<p>Thanks for such a good article on maps. I found one issue in your block related to debug certificate  on given location <span style="font-weight:bold">C:\Documents and Settings\\Local Settings\Application Data\Android</span>. When a generate the finger for specified location, after generating finger pint, i generate the api key. My app is running fine but i am not able to see any maps on emulator only grid view are there.</p>
+<p>My problem is resolved when i get the debug key store on the given location:<br>
+<span style="font-weight:bold"> C:\Documents and Settings\\.android\debug.keystore</span></p>
+<p>Debug key store location on different operating systems.</p>
+<p>➤ Windows Vista \users\\.android\debug.keystore<br>
+➤ Windows XP \Documents and Settings\\.android\debug.keystore<br>
+➤ Linux or Mac ∼/.android/debug.keystore</p>
+<p>Hope this will help.</p>
+<p>Thanks<br>
+Avdhesh</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6939"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6939">Posted by </a>cnbishop 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>thanks for a great tutorial!  i was wondering, how can i add an additional marker to the spot when the user touches the map?</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-6978"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-6978">Posted by </a>tripple60 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello, I would like to use your great example on using google maps in android to learn and explore how the code works in eclipse with the JDK.  Could you email me the source code on this so I can begin experimenting? Much appreciated.  <script type="text/javascript">eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%74%72%69%70%70%6c%65%36%30%40%67%6d%61%69%6c%2e%63%6f%6d%22%3e%74%72%69%70%70%6c%65%36%30%40%67%6d%61%69%6c%2e%63%6f%6d%3c%2f%61%3e%27%29%3b'))</script><a href="mailto:tripple60@gmail.com">tripple60@gmail.com</a>  </p>
+<p>Matt</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7074"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7074">Posted by </a>gaurid3 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi, I got the debug key for my application. I have added INTERNET permission too. The app loads but  doesn't show the map in emulator. What can be the reason? Does it work behind proxy?</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7354"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7354">Posted by </a>vivekasohan 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>good sample ya i got everything correctly</p>
+        vivekasohan
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7537"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7537">Posted by </a>leon01061988 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi ! i have got the same problem about the first time with the map did not show anything, except only grid. I have follow all those steps, about getting MD5 finger print, and Google Maps API key, also Internet permission.<br>
+Anyone who 's solved this problem before, please reply to me soon, thanks!</p>
+<p>Note: i have deployed on my own HTC phone (Wild Fire), may be there 's some different in set up environment or not ?</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7545"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7545">Posted by </a>legend 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Great tutorial!  Really appreciated for this great information for a newbee like me and it really helps!</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7552"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7552">Posted by </a>Kamalone 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hai ,</p>
+<p>Thank you very much for the Great tutorial!! It Helped me a lot.</p>
+<p>But i am getting error while modifying the code. </p>
+<p>In my application has two xml file. One is first.xml and the other is main.xml</p>
+<p>by starting first.xml is loading and it has viewMAP button. If click that going to main.xml and the map shows there.(It is showing correctly)</p>
+<p>and the main.xml another buton is there for going back which allows the user to go back to first.XML(It is also working fine).</p>
+<p>If i am again click the viewMAP button then the application shows "InfalteException:Binary xml file line #6: Error in inflating class ".</p>
+<p>My Code is</p>
+<div class="geshifilter">
+<pre class="geshifilter-text">XML files
+&nbsp;
+1.first.xml
+&nbsp;
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"&gt;
+&nbsp;
+  &lt;Button android:text="View MAP" android:id="@+id/view" android:layout_width="wrap_content" android:layout_height="wrap_content"&gt;&lt;/Button&gt;
+&nbsp;
+&lt;/LinearLayout&gt;
+&nbsp;
+&nbsp;
+2.main.xml
+&nbsp;
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:orientation="vertical"&gt;
+&nbsp;
+    &lt;com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:clickable="true"
+        android:apiKey="***************************************"
+&nbsp;
+        &gt;&lt;/com.google.android.maps.MapView&gt;
+&nbsp;
+    &lt;LinearLayout android:id="@+id/zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        &gt;
+&nbsp;
+         &lt;/LinearLayout&gt;
+&nbsp;
+&lt;RelativeLayout android:layout_marginTop="-40dip" android:gravity="bottom" android:layout_height="wrap_content" android:layout_width="wrap_content"&gt;
+&nbsp;
+    &lt;Button android:id="@+id/back" android:layout_height="40px" android:layout_width="110px" android:layout_gravity="center" android:text="Back" android:textSize="20px"&gt;&lt;/Button&gt;
+&lt;/RelativeLayout&gt;
+&lt;/LinearLayout&gt;
+&nbsp;
+&nbsp;
+&nbsp;
+public class HelloGoogleMaps extends MapActivity implements View.OnClickListener {
+    Button view;
+    Button back;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        try {
+            super.onCreate(savedInstanceState);
+            first();
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e, 10).show();
+        }
+    }
+&nbsp;
+    @Override
+    protected boolean isRouteDisplayed() {
+        return false;
+    }
+&nbsp;
+&nbsp;
+    public void first(){
+        try{
+            setContentView(R.layout.first);
+            view = (Button) findViewById(R.id.view);
+            view.setOnClickListener(this);
+        }
+        catch(Exception e){
+            Toast.makeText(this, ""+e, 10).show();
+        }
+    }
+&nbsp;
+&nbsp;
+    public void map() {
+        try {
+            setContentView(R.layout.main);
+            MapView mapView = (MapView) findViewById(R.id.mapview);
+            mapView.setBuiltInZoomControls(true);
+            Double d = 52.093504;
+            List&lt;Overlay&gt; mapOverlays = mapView.getOverlays();
+            Drawable drawable = this.getResources().getDrawable(
+                    R.drawable.pinpoint);
+            HelloItemizedOverlay itemizedoverlay = new HelloItemizedOverlay(
+                    drawable, this);
+            GeoPoint point = new GeoPoint((int) (d * (1E6)),
+                    (int) (5.1176533 * (1E6)));
+            OverlayItem overlayitem = new OverlayItem(point,
+                    "Laissez les bon temps rouler!", "I'm in Louisiana!");
+            itemizedoverlay.addOverlay(overlayitem);
+&nbsp;
+            mapOverlays.add(itemizedoverlay);
+            mapView.invalidate();
+            back = (Button) findViewById(R.id.back);
+            back.setOnClickListener(this);
+&nbsp;
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e, 10).show();
+        }
+    }
+&nbsp;
+    @Override
+    public void onClick(View v) {
+        if (v == view) {           
+            map();
+        }
+        else if(v==back){
+            first();
+        }
+&nbsp;
+    }
+}
+&nbsp;
+Please Help,
+Thank you.</pre></div>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7576"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7576">Posted by </a>DhruvJoshi 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello</p>
+<p>This is very nice tutorial.But I want to know if i want to overlay map more than 1 location.then what i have to do.can i write</p>
+<p>My code is</p>
+<p>location = new GeoPoint(230583152,725690172);<br>
+location1 = new GeoPoint(230395677,725660045);<br>
+HelloItemtizedOverlay overlay1 = new HelloItemtizedOverlay(drawable);<br>
+			OverlayItem item = new OverlayItem(location,"", "");<br>
+			overlay1.addOverlay(item); </p>
+<p>			location1 = new GeoPoint(230395677,725660045);<br>
+		   	OverlayItem item2 = new OverlayItem(location1,"", "");<br>
+		   	overlay1.addOverlay(item2);<br>
+			mapView.getOverlays().add(overlay1);<br>
+		 MapOverlay mapOverlay = new MapOverlay();</p>
+<p>		   MapOverlay mapOverlay1 = new MapOverlay();<br>
+		   List listOfOverlays = mapView.getOverlays();<br>
+	       listOfOverlays.clear();<br>
+          listOfOverlays.add(mapOverlay);  </p>
+<p>and in MapOverlay class</p>
+<p>   mapView.getProjection().toPixels(location, screenPts);</p>
+<p>	               mapView.getProjection().toPixels(location1, screenPts);</p>
+<p>But i got only one overlay on the map.</p>
+<p>can u help me. to display more than one overlay on google map.write some code line.thanks.Plz Reply Soon</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7578"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7578">Posted by </a>DhruvJoshi 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p></p><div class="bb-quote"><b>DhruvJoshi wrote:</b><blockquote class="bb-quote-body">Hello<p></p>
+<p>This is very nice tutorial.But I want to know if i want to overlay map more than 1 location.then what i have to do.can i write</p>
+<p>My code is</p>
+<p>location = new GeoPoint(230583152,725690172);<br>
+location1 = new GeoPoint(230395677,725660045);<br>
+HelloItemtizedOverlay overlay1 = new HelloItemtizedOverlay(drawable);<br>
+			OverlayItem item = new OverlayItem(location,"", "");<br>
+			overlay1.addOverlay(item); </p>
+<p>			location1 = new GeoPoint(230395677,725660045);<br>
+		   	OverlayItem item2 = new OverlayItem(location1,"", "");<br>
+		   	overlay1.addOverlay(item2);<br>
+			mapView.getOverlays().add(overlay1);<br>
+		 MapOverlay mapOverlay = new MapOverlay();</p>
+<p>		   MapOverlay mapOverlay1 = new MapOverlay();<br>
+		   List listOfOverlays = mapView.getOverlays();<br>
+	       listOfOverlays.clear();<br>
+          listOfOverlays.add(mapOverlay);  </p>
+<p>and in MapOverlay class</p>
+<p>   mapView.getProjection().toPixels(location, screenPts);</p>
+<p>	               mapView.getProjection().toPixels(location1, screenPts);</p>
+<p>But i got only one overlay on the map.</p>
+<p>can u help me. to display more than one overlay on google map.write some code line.thanks.Plz Reply Soon</p></blockquote></div><p></p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7587"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7587">Posted by </a>stelioschar 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello,</p>
+<p>Great tutorial...!!</p>
+<p>Is there any way to draw a bubble that contains some information about the geotag??</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7591"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7591">Posted by </a>FMLDev 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Awesome Tutorial! I've read 4 separate books on Android Development, this is by far the easiest to follow.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7624"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7624">Posted by </a>ahmed.niyas 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi,<br>
+Recently i tried the same in android 2.2 SDK with google api version 8. But i m also facing the same problem, map is not displaying only grid lines are coming.<br>
+I tried opening maps through interner browser in that case it is working fine but when i tried with inbuilt map apps or my own app it is not displaying map.<br>
+anyone who resolved the same problem, please reply ASAP. Thankss in Advance</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7627"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7627">Posted by </a>zingar 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>hello Ahmed, i was having the same problem you have and i had tried everything.<br>
+turns out it was my mistake :P<br>
+i wasnt generating the API correctly, i had a typing error in the fingerprint and that made a invalid API key. once i figured that out i created a new API with the correct fingerprint and it worked!</p>
+<p>good luck</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7628"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7628">Posted by </a>dishanf 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Great tutorial! Thank You Mr Lee!</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7630"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7630">Posted by </a>ahmed.niyas 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi ZINGAR, </p>
+<p>Thanks for the quick reply and Mr.Lee for a fantastic article.<br>
+Actually i was using proxy for SDk.Hence it was not working.<br>
+If i connect my sdk directly it is working fine.</p>
+<p>Also for ppl who are facing same problem in SDK connected with proxy servers can try using your android phone(build ur app in debug mode using same procedures mentioned above) and im able to see the maps.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7685"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7685">Posted by </a>newbee 1 year ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Mr.Lee </p>
+<p>     The code for Geo coding is not working.I am not getting the address of a location that i had just touched.<br>
+please check once &amp; send the correct code for Geo coding.</p>
+<p>thanks in advance.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7827"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7827">Posted by </a>aatul.paliwal 49 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hi;<br>
+I have developed the map application from the tutorial and it has build successfully. Now my problem is that when i am going to deploy the application into real device, its showing me the message: <span style="font-weight:bold">Application Not Installed</span></p>
+<p>please help me.</p>
+<p>Thanks in advance.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7910"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7910">Posted by </a>safadi909 46 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>hi, i had this problem with using maps in android </p>
+<div class="geshifilter">
+<pre class="geshifilter-text">java.lang.IllegalAccessError: Class ref in pre-verified class resolved to unexpected implementation</pre></div>
+<p>i had attached maps.jar.</p>
+<p>just check if u have another maps.jar then this jar which is loaded with google API.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7967"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7967">Posted by </a>mr_sps 43 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello weimenglee,</p>
+<p>Thanks for the nice tutorial. It's really great. I am using your code in my project. </p>
+<p>Now I have issue, when we do zoomIn/zoomOut that time location of  Markers is not showing on place but when we stop zoomIn/zoomOut  than it's show on current place. </p>
+<p>I just want th change marker position with zoom [map controller on zoomIn and zoomOut]. Can you please give me an idea. </p>
+<p>waiting for your responce.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-7968"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-7968">Posted by </a>mr_sps 43 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hello ,</p>
+<p>Can you please help me, I have put me code here..</p>
+<p>The issue is, when we do zoomIn/zoomOut on map I want the pin position should not change. At any point of time the position of marker can't change it's location.</p>
+<p>Here is my code:- </p>
+<p>public class MapsActivity extends MapActivity<br>
+{<br>
+	MapView mapView;<br>
+	MapController mc;<br>
+	GeoPoint p;</p>
+<p>	class MapOverlay extends com.google.android.maps.Overlay<br>
+	{<br>
+		@Override<br>
+		public boolean draw(Canvas canvas, MapView mapView,<br>
+				boolean shadow, long when)<br>
+		{<br>
+			super.draw(canvas, mapView, shadow);                   </p>
+<p>			//---translate the GeoPoint to screen pixels---<br>
+			Point screenPts = new Point();<br>
+			mapView.getProjection().toPixels(p, screenPts);<br>
+			//mapView.getProjection().toPixels(p, screenPts);<br>
+			//---add the marker---<br>
+			Bitmap bmp = BitmapFactory.decodeResource(<br>
+					getResources(), R.drawable.pin);<br>
+			canvas.drawBitmap(bmp, screenPts.x, screenPts.y-50, null);<br>
+			return true;<br>
+		}</p>
+<p>		@Override<br>
+		public boolean onTouchEvent(MotionEvent event, MapView mapView) {</p>
+<p>			if (event.getAction() == 1) {<br>
+				p = mapView.getProjection().fromPixels((int) event.getX(), (int) event.getY());<br>
+				mc.animateTo(p);<br>
+				//listOfOverlays.add(this);<br>
+				return true;<br>
+			} else{<br>
+				//this.draw(this.toString(), mapView,this.SHADOW_X_SKEW, this.SHADOW_Y_SCALE);<br>
+				return false;<br>
+			}</p>
+<p>		}<br>
+	}<br>
+	/** Called when the activity is first created. */<br>
+	@Override<br>
+	public void onCreate(Bundle savedInstanceState)<br>
+	{<br>
+		super.onCreate(savedInstanceState);<br>
+		setContentView(R.layout.main);</p>
+<p>		mapView = (MapView) findViewById(R.id.mapView);<br>
+		LinearLayout zoomLayout = (LinearLayout)findViewById(R.id.zoom);<br>
+		View zoomView = mapView.getZoomControls(); </p>
+<p>		zoomLayout.addView(zoomView,<br>
+				new LinearLayout.LayoutParams(<br>
+						LayoutParams.WRAP_CONTENT,<br>
+						LayoutParams.WRAP_CONTENT));<br>
+		mapView.displayZoomControls(true);</p>
+<p>		mc = mapView.getController();<br>
+		String coordinates[] = {"1.352566007", "103.78921587"};<br>
+		double lat = Double.parseDouble(coordinates[0]);<br>
+		double lng = Double.parseDouble(coordinates[1]);</p>
+<p>		p = new GeoPoint(<br>
+				(int) (lat * 1E6),<br>
+				(int) (lng * 1E6));</p>
+<p>		mc.animateTo(p);<br>
+		mc.setZoom(17); </p>
+<p>		//---Add a location marker---<br>
+		MapOverlay mapOverlay = new MapOverlay();<br>
+		List listOfOverlays = mapView.getOverlays();<br>
+		listOfOverlays.clear();<br>
+		listOfOverlays.add(mapOverlay);        </p>
+<p>		mapView.invalidate();<br>
+	}</p>
+<p>	@Override<br>
+	protected boolean isRouteDisplayed() {<br>
+		// TODO Auto-generated method stub<br>
+		return false;<br>
+	}<br>
+}</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-8015"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-8015">Posted by </a>maali 41 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Hej Wei-Meng</p>
+<p>I tried this using Eclipse.<br>
+For some reason Eclipse does not read the "import com.google.android.maps" liberaries !!</p>
+<p>What do I do wrong?</p>
+<p>BR<br>
+Maali</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-8021"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-8021">Posted by </a>didacgil9 41 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Once applications like this one are done, how is it possible to deploy in mobile phones that do not contain the Google APIs? Such as the HTC Hero.<br>
+It complains (even the logcat says nothing) about a missing com.google.android.maps library.</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-8022"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-8022">Posted by </a>assem.mohsen 41 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>to BR Maali</p>
+<p>change your file AndroidManifest.xml like this:</p>
+<div class="geshifilter">
+<pre class="geshifilter-text">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="net.learn2develop.GoogleMaps"
+      android:versionCode="1"
+      android:versionName="1.0"&gt;
+    &lt;application android:icon="@drawable/icon" android:label="@string/app_name"&gt;
+     &lt;uses-library android:name="com.google.android.maps" /&gt;
+        &lt;activity android:name=".MapsActivity"
+                  android:label="@string/app_name"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+&nbsp;
+    &lt;/application&gt;
+    &lt;uses-sdk android:minSdkVersion="3" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"&gt;&lt;/uses-permission&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"&gt;&lt;/uses-permission&gt;
+&lt;uses-permission android:name="android.permission.INTERNET"&gt;&lt;/uses-permission&gt;
+&nbsp;
+&nbsp;
+&lt;/manifest&gt;</pre></div>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-8023"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-8023">Posted by </a>khan 41 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Thanks Mr. Lee for the wonderful tutorial...expect more tutorial from you on maps and location based services for android platform..a bit more explanation of the codes will be extremely useful..</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-8084"></a>
+
+<div class="odd">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-8084">Posted by </a>davidiz 38 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>Thank you the tutorial is very well written.  I do have one problem with the reversed geocode example.  As far as I can determine the Try returns an exception relating to not connecting to google.  My maps work so I know I have the correct apikey and permissions.<br>
+Is there something else I need from google to access the Geocode?</p>
+<p>I think this is the last messages on the log:<br>
+02-11 15:59:12.848: WARN/InputReader(67):   Touch device did not report support for X or Y axis!<br>
+02-11 15:59:24.678: DEBUG/SntpClient(67): request time failed: java.net.SocketException: Address family not supported by protocol</p>
+<p>These are my imports:<br>
+import java.io.IOException;<br>
+import java.util.List;<br>
+import java.util.Locale;</p>
+<p>import android.graphics.Bitmap;<br>
+import android.graphics.BitmapFactory;<br>
+import android.graphics.Canvas;<br>
+import android.graphics.Point;<br>
+import android.location.Address;<br>
+import android.location.Geocoder;<br>
+import android.os.Bundle;<br>
+import android.view.MotionEvent;<br>
+import android.view.View;<br>
+import android.widget.LinearLayout;<br>
+import android.widget.Toast;<br>
+import com.google.android.maps.GeoPoint;<br>
+import com.google.android.maps.MapActivity;<br>
+import com.google.android.maps.MapController;<br>
+import com.google.android.maps.MapView;<br>
+import com.google.android.maps.MapView.LayoutParams;<br>
+import com.google.android.maps.Overlay;</p>
+<p>Here is my code:  (there are no errors)</p>
+<p>       @Override<br>
+        public boolean onTouchEvent(MotionEvent event, MapView mapView)<br>
+        {<br>
+            //---when user lifts his finger---<br>
+            if (event.getAction() == 1) {<br>
+                GeoPoint p = mapView.getProjection().fromPixels(<br>
+                    (int) event.getX(),<br>
+                    (int) event.getY());</p>
+<p>                Geocoder geoCoder = new Geocoder(<br>
+                        getBaseContext(), Locale.getDefault());<br>
+                    try {<br>
+                        List addresses = geoCoder.getFromLocation(<br>
+                            p.getLatitudeE6()  / 1E6,<br>
+                            p.getLongitudeE6() / 1E6, 1);</p>
+<p>                        String add = "";<br>
+                        if (addresses.size() &gt; 0)<br>
+                        {<br>
+                            for (int i=0; i<addresses.get(0).getmaxaddresslineindex();<br>
+                                 i++)<br>
+                               add += addresses.get(0).getAddressLine(i) + "\n";<br>
+                        }<br>
+                        Toast.makeText(getBaseContext(), add, Toast.LENGTH_SHORT).show();<br>
+                    }<br>
+                    catch (IOException e) {<br>
+                        e.printStackTrace();</addresses.get(0).getmaxaddresslineindex();<br></p>
+<p>                    }<br>
+                    return true;<br>
+            }<br>
+            else<br>
+                return false;<br>
+        }<br>
+    }</p>
+        
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<a id="comment-8100"></a>
+
+<div class="even">
+  <!--  -->
+  </div> <!-- /comment -->
+
+
+
+    <div class="section ">
+      <h3><a href="http://mobiforge.com/developing/story/using-google-maps-android#comment-8100">Posted by </a>nischal 37 weeks ago </h3>
+      
+      
+      <div class="inside clearfix comment-post">
+                  <div class="entry">
+                <p>hi , </p>
+<p>i am successful in displaying google map .</p>
+<p>now i want to add "search" option to it .i.e the user can give a place name as input and our map should display that respective position</p>
+<p>how can i do this ?</p>
+<p>can anyone plz do guide me?</p>
+        nischal
+      </div>
+
+
+ <div class="prepend-10 clear"></div>               
+    </div> <!-- .inside -->
+          
+  </div> <!-- .screen -->
+<div class="pager"><div id="pager-previous"><span class="pager-previous inactive"> Previous</span></div><div id="pager-list"><span class="pager-list"><strong class="pager-current">1</strong><a href="http://mobiforge.com/developing/story/using-google-maps-android?page=1" class="pager-last active" title="Go to page 2">2</a></span></div><div id="pager-next"><a href="http://mobiforge.com/developing/story/using-google-maps-android?page=1" class="pager-last active">Next </a></div></div></div>
+         <div id="comment-signup">
+           <div class="section clearfix">
+             <div class="inside login">
+               <p><a href="http://mobiforge.com/user?destination=node%2F1988">Sign in</a> or <a href="http://mobiforge.com/user/register?destination=node%2F1988">register</a> to reply.</p>
+             </div> <!-- .inside -->
+           </div> <!-- .section -->
+         </div></div>    
+  </div> <!-- #content -->
+<!-- google_ad_section_start(weight=ignore) -->
+    <div id="sidebar">
+      <div class="widget one noheading clearfix"><h3>In this section</h3><ul><li><a href="http://mobiforge.com/Developing/Content-Adaptation" title="Learn about Developing, Content Adaptation">Content Adaptation</a></li><li><a href="http://mobiforge.com/Developing/Tools" title="Learn about Developing, Tools">Tools</a></li><li><a href="http://mobiforge.com/Developing/Browsers" title="Learn about Developing, Browsers">Browsers</a></li><li class="more"><a href="http://mobiforge.com/Developing/topics" title="More categories">More &gt;</a></li></ul><hr><ul><li><a href="http://mobiforge.com/Developing/article-listing" title="Read articles in section Developing">Articles</a></li><li><a href="http://mobiforge.com/Developing/blog-listing" title="Read blog posts in section Developing">Blog posts</a></li><li><a href="http://mobiforge.com/forum/Developing" title="Go to the Developing forum">Developing Forum</a></li></ul></div><div class="widget one clearfix"><h3><a href="http://mobiforge.com/forum/Developing" title="Go to the Developing forum">Most popular</a></h3><ul><li class="heading"><a href="http://mobiforge.com/forum/Developing" title="Go to the Developing forum"><strong>story</strong></a></li><li><a href="http://mobiforge.com/developing/story/lightweight-device-detection-php">Lightweight Device-Detection in...</a></li><li class="heading"><strong>blog</strong></li><li><a href="http://mobiforge.com/designing/blog/web-developers-guide-released">Web Developer's Guide released</a></li><li class="heading"><strong>forum</strong></li><li><a href="http://mobiforge.com/forum/developing/content-management/is-mobilikey-best-free-mobile-website-creator">Is MobiliKey the best free mobile...</a></li></ul></div>
+<div class="advertisement group-tids-223" id="group-id-tids-223"><script type="text/javascript" src="./GoogleMapsAndroid_files/serve(1).php"></script><div class="html-advertisement" id="ad-1806"><div class="ad-header"><div class="note yellow clearfix"><p><a title="dotMobi certification program" href="http://mobiforge.com/node/223">Certification</a></p></div></div></div></div>
+<div class="note gray clearfix"><p><a title="Get the dotMobi Web Developer&#39;s Guide" href="http://mobiforge.com/node/197">Developer's guide</a></p></div><div class="ad_hr"><strong>Advertising</strong></div>
+<div class="advertisement group-tids-216" id="group-id-tids-216"><script type="text/javascript" src="./GoogleMapsAndroid_files/serve(2).php"></script><div class="image-advertisement" id="ad-3240"><a href="http://mobiforge.com/ad/redirect/3240/t216/" title="" onclick="window.open(this.href); return false;"><img src="./GoogleMapsAndroid_files/gomobi_ani.gif" width="180" height="150" alt=""></a></div></div>
+
+<div class="advertisement group-tids-226" id="group-id-tids-226"><script type="text/javascript" src="./GoogleMapsAndroid_files/serve(3).php"></script><!-- No active ads were found in the tids '226'. --></div>
+<a alt="Mobile Device Detection Benchmarking Whitepaper" target="blank" href="http://mobiforge.com/ad/redirect/3632/t221/"><img src="./GoogleMapsAndroid_files/da-180x150.jpg" width="180" height="150" alt="Mobile Device Detectioni Benchmarking Whitepaper" style="text-align:center"></a>
+<div class="advertisement group-tids-233" id="group-id-tids-233"><script type="text/javascript" src="./GoogleMapsAndroid_files/serve(4).php"></script><!-- No active ads were found in the tids '233'. --></div>
+
+    <form method="post" action="http://ready.mobi/results.jsp" target="blank">
+      <div id="readymobi">
+        <img src="./GoogleMapsAndroid_files/ready_ad.gif" width="180" height="150" alt="ready.mobi">
+        <div id="url-box">
+          <input type="text" class="text" name="uri" value="http://">
+        </div>
+        <div id="go-button">
+          <input type="image" src="./GoogleMapsAndroid_files/go-button.png" alt="Go" title="Go">
+        </div>
+      </div>
+    </form>
+      </div> <!-- #sidebar -->
+<!-- google_ad_section_end -->
+
+  
+</div>
+
+    </div>
+<!-- google_ad_section_start(weight=ignore) -->
+    <div id="footer" class="container">
+      <div class="span-10 first left">Copyright © 2006-11 dotMobi</div>
+        <div class="span-28 center">
+          <ul>
+            <li class="first"><a href="http://mobiforge.com/page/about-mobiforge">About</a></li>
+            <li><a href="http://mobiforge.com/page/contact">Contact</a></li>
+            <li><a href="http://mobiforge.com/page/write-us-0">Write for us</a></li>
+            <li><a href="http://mobiforge.com/webform/advertise-mobiforge">Advertise</a></li>
+            <li><a href="http://mobiforge.com/legal">Legal</a></li>
+          </ul>
+        </div>
+<!-- google_ad_section_end -->
+      <div class="span-10 last right">
+<!--        <p><a href="/rssfeed">Follow us</a></p> -->
+        <div class="follow-links">
+<a href="http://twitter.com/mobiforge" title="Follow mobiForge on Twitter"><img src="./GoogleMapsAndroid_files/twitter_rss.gif"></a> <a href="http://mobiforge.com/rssfeed" title="Follow mobiForge via RSS"><img src="./GoogleMapsAndroid_files/mini-rss-badge.gif"></a> <a href="http://mobiforge.com/rssfeed" title="Follow mobiForge via RSS">Follow us</a>
+
+        </div>
+      </div>
+    </div>
+
+    
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./GoogleMapsAndroid_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3084173-5");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+  
+
+</body></html>

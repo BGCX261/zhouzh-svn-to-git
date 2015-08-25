@@ -1,0 +1,10 @@
+
+08vm695R-cHzLbtZ6DE59ryVEyrCC1IqM7Gq3nQ
+
+7A:4A:DD:8E:76:39:9D:5D:1D:03:BA:E9:58:D8:F2:CE
+
+<com.google.android.maps.MapView
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:apiKey="08vm695R-cHzLbtZ6DE59ryVEyrCC1IqM7Gq3nQ"
+                 />

@@ -1,0 +1,223 @@
+Android 打开 GPS 导航并获取位置信息   -- 未审核 编辑文档 最近在做一个 Android 项目，需要用到GPS获取位置信息，从 API 查了一下，发现获取位置信息仅需极其简单的一句即可：
+
+　　getLastKnownLocation(LocationManager.GPS_PROVIDER),
+
+　　于是高兴地不得了。可是一写进代码里，返回值(Location 类型)居然一直为null..郁闷的不得了。在网上查了好久，发现好多人都和我一样纠结于这个问题上，有人说是因为GPS没打开，也有人说是相关权限没加上..可是我的明明已经在设置里打开，权限自然也加上了。在api上纠结了半天，终于找出原因了，原来要打开GPS其实在于这句：
+
+　　setTestProviderEnabled("gps",true);
+
+　　而跟手机上的设置没多大关系(起码在我的手机上测是这样的)。手机上的设置关闭了，这一句照样能打开;而即使手机设置打开了，没这一句也是白搭。与这句对应的是
+
+　　setTestProviderEnabled("gps",false);
+
+　　用来关闭GPS.
+
+　　GPS打开后可以用上面的方法获取Location了吗?还是不可以!确切地说是有时候可以，因为这个函数获取的是上次已经获得的位置信息，设想如果此程序第一次跑，先前并没有获取过位置信息，当然返回值为null了。经仔细查看api，在
+
+　　requestLocationUpdates (String provider, long minTime, float minDistance, LocationListener listener)
+
+　　里发现了这样一句话：It may take a while to receive the most recent location. If an immediate location is required, applications may use the getLastKnownLocation(String) method. 因此为了获取位置信息，应该用此方法为manager设置监听器，在监听器中onLocationChanged(Location location)里获取。
+
+　　测试代码如下：
+
+　　public void onLocationChanged(Location location)
+
+　　{
+
+　　Log.i("onLocationChanged", "come in");
+
+　　if (location != null)
+
+　　{
+
+　　Log.w("Location","Current altitude = "+ location.getAltitude());
+
+　　Log.w("Location","Current latitude = "+ location.getLatitude());
+
+　　}
+
+　　}
+
+　　经过测试，经过一段时间后可以获取Location(获取时间与minTime、minDistance相关)。还需注意的一个问题是在设置了监听器后，删除监听器之前不能用上面的方法关闭gps，否则会报错。因此关闭gps的方法是
+
+manager.removeUpdates (listener);//listener 即为监听器实例
+
+　　manager.setTestProviderEnabled("gps",false);
+
+　　以下是测试代码，所需权限有：
+
+　　
+
+　　
+
+　　
+
+　　1 import android.app.Activity;
+
+　　2 import android.content.Context;
+
+　　3 import android.location.Criteria;
+
+　　4 import android.location.Location;
+
+　　5 import android.location.LocationListener;
+
+　　6 import android.location.LocationManager;
+
+　　7 import android.os.Bundle;
+
+　　8 import android.util.Log;
+
+　　9
+
+　　10 public class audio extends Activity
+
+　　11 {
+
+　　12
+
+　　13 /** Called when the activity is first created. */
+
+　　14 LocationManager locationManager;
+
+　　15 LocationListener llistener;
+
+　　16 String provider;
+
+　　17
+
+　　18 public void onCreate(Bundle savedInstanceState)
+
+　　19 {
+
+　　20 super.onCreate(savedInstanceState);
+
+　　21 setContentView(R.layout.main);
+
+　　22
+
+　　23 Criteria criteria = new Criteria();
+
+　　24 criteria.setAccuracy(Criteria.ACCURACY_FINE);
+
+　　25 criteria.setAltitudeRequired(false);
+
+　　26 criteria.setBearingRequired(false);
+
+　　27 criteria.setCostAllowed(true);
+
+　　28 criteria.setPowerRequirement(Criteria.POWER_LOW);
+
+　　29 String serviceName = Context.LOCATION_SERVICE;
+
+　　30 locationManager = (LocationManager) getSystemService(serviceName);
+
+　　31 locationManager.setTestProviderEnabled("gps", true);
+
+　　32 provider = locationManager.getBestProvider(criteria, true);
+
+　　33 Log.d("provider", provider);
+
+　　34
+
+　　35 llistener = new LocationListener() {
+
+　　36 @Override
+
+　　37 public void onLocationChanged(Location location)
+
+　　38 {
+
+　　39 // TODO Auto-generated method stub
+
+　　40 Log.i("onLocationChanged", "come in");
+
+41 if (location != null)
+
+　　42 {
+
+　　43 Log.w("Location", "Current altitude = "
+
+　　44 + location.getAltitude());
+
+　　45 Log.w("Location", "Current latitude = "
+
+　　46 + location.getLatitude());
+
+　　47 }
+
+　　48 locationManager.removeUpdates(this);
+
+　　49 locationManager.setTestProviderEnabled(provider, false);
+
+　　50 }
+
+　　51
+
+　　52 @Override
+
+　　53 public void onProviderDisabled(String provider)
+
+　　54 {
+
+　　55 // TODO Auto-generated method stub
+
+　　56 Log.i("onProviderDisabled", "come in");
+
+　　57
+
+　　58 }
+
+　　59
+
+　　60 @Override
+
+　　61 public void onProviderEnabled(String provider)
+
+　　62 {
+
+　　63 // TODO Auto-generated method stub
+
+　　64 Log.i("onProviderEnabled", "come in");
+
+　　65 }
+
+　　66
+
+　　67 @Override
+
+　　68 public void onStatusChanged(String provider, int status,
+
+　　69 Bundle extras)
+
+　　70 {
+
+　　71 // TODO Auto-generated method stub
+
+　　72 Log.i("onStatusChanged", "come in");
+
+　　73
+
+　　74 }
+
+　　75
+
+　　76 };
+
+　　77 locationManager.requestLocationUpdates(provider, 1000, (float) 1000.0, llistener);
+
+　　78 }
+
+　　79
+
+　　80 protected void onDestroy()
+
+　　81 {
+
+　　82 locationManager.removeUpdates(llistener);
+
+　　83 locationManager.setTestProviderEnabled(provider, false);
+
+　　84 super.onDestroy();
+
+　　85 }

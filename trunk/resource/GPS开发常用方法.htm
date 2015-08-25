@@ -1,0 +1,437 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0040)http://qq361119908.iteye.com/blog/665074 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+dir="ltr" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=UTF-8" 
+http-equiv="Content-Type"><TITLE>GPS开发常用方法 和用Criteria确定android location 
+providerGPS开发常用方法 - ET焖猪仔 - ITeye技术网站</TITLE>
+<META name="description" content="GPS常用方法总结 取得LocationProvider public void getLocationProvider()     {       try       {         Criteria mCriteria01 = new Criteria();         mCriteria01.setAccuracy(Criteria.ACCURACY_FINE);         mC ...">
+<META name="keywords" content="Android, UP GPS开发常用方法 和用Criteria确定android location providerGPS开发常用方法"><LINK 
+rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><LINK title="ITeye" 
+rel="search" type="application/opensearchdescription+xml" href="/open_search.xml"><LINK 
+title="ET焖猪仔" rel="alternate" type="application/rss+xml" href="/rss"><LINK rel="stylesheet" 
+type="text/css" href="GPS开发常用方法_files/blog.css" media="screen"><LINK rel="stylesheet" 
+type="text/css" href="GPS开发常用方法_files/blue.css" media="screen">
+<SCRIPT type="text/javascript" src="GPS开发常用方法_files/application.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+<LINK rel="stylesheet" type="text/css" href="GPS开发常用方法_files/SyntaxHighlighter.css" 
+media="screen">
+<SCRIPT type="text/javascript" src="GPS开发常用方法_files/shCoreCommon.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="GPS开发常用方法_files/hotkey.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="GPS开发常用方法_files/code_favorites.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="GPS开发常用方法_files/weiboshare.js"></SCRIPT>
+
+<STYLE>
+    div#main {background-color: transparent; border: 0; padding: 0px; width: 740px;}
+  </STYLE>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16437"></HEAD>
+<BODY>
+<DIV id="header">
+<DIV id="blog_site_nav"><A class="homepage" 
+href="http://www.iteye.com/">首页</A><A href="http://www.iteye.com/news">资讯</A><A 
+href="http://www.iteye.com/magazines">精华</A><A href="http://www.iteye.com/forums">论坛</A><A 
+href="http://www.iteye.com/ask">问答</A><A 
+href="http://www.iteye.com/blogs">博客</A><A 
+href="http://www.iteye.com/groups">群组</A><A id="msna" onclick="return false;" 
+href="http://qq361119908.iteye.com/blog/665074#"><U>更多</U> <SMALL>▼</SMALL></A>
+<DIV style="display: none;" class="quick_menu"><A href="http://www.iteye.com/job">招聘</A><A 
+href="http://www.iteye.com/search">搜索</A></DIV></DIV>
+<DIV id="user_nav"><A class="welcome" title="登录" href="http://qq361119908.iteye.com/login">您还未登录 
+!</A><A href="http://qq361119908.iteye.com/login">登录</A><A class="nobg" href="http://qq361119908.iteye.com/signup">注册</A></DIV></DIV>
+<DIV id="page">
+<DIV id="branding" class="clearfix">
+<DIV id="blog_name">
+<H1><A href="http://qq361119908.iteye.com/">ET焖猪仔</A></H1></DIV>
+<DIV id="blog_preview"></DIV>
+<DIV id="blog_domain">永久域名 <A 
+href="http://qq361119908.iteye.com/">http://qq361119908.iteye.com/</A></DIV></DIV>
+<DIV id="content" class="clearfix">
+<DIV id="main">
+<DIV class="blog_main">
+<DIV class="blog_nav">
+<DIV class="pre_next"><A class="next" title="读取SIM卡信息" href="http://qq361119908.iteye.com/blog/673392">读取SIM卡信息</A>| 
+     <A class="pre" title="Android中AsyncTask的用法" href="http://qq361119908.iteye.com/blog/662069">Android中AsyncTask的用法</A></DIV></DIV>
+<DIV class="blog_title">
+<DIV class="date"><SPAN class="year">2010</SPAN><SPAN 
+class="sep_year">-</SPAN><SPAN class="month">05</SPAN><SPAN 
+class="sep_month">-</SPAN><SPAN class="day">12</SPAN></DIV>
+<H3><A href="http://qq361119908.iteye.com/blog/665074">GPS开发常用方法 
+和用Criteria确定android location providerGPS开发常用方法</A><EM class="actions"></EM></H3>
+<UL class="blog_categories"><STRONG>博客分类：</STRONG> 
+  <LI><A href="http://qq361119908.iteye.com/category/104365">android</A></LI> 
+</UL>
+<DIV class="news_tag"><A 
+href="http://www.iteye.com/blogs/tag/Android">Android</A><A href="http://www.iteye.com/blogs/tag/UP">UP</A></DIV></DIV>
+<DIV id="blog_content" class="blog_content"><STRONG>GPS常用方法总结</STRONG><BR>
+<BR><STRONG>取得LocationProvider</STRONG><BR><PRE class="java" name="code">public void getLocationProvider() 
+  { 
+    try 
+    { 
+      Criteria mCriteria01 = new Criteria(); 
+      mCriteria01.setAccuracy(Criteria.ACCURACY_FINE); 
+      mCriteria01.setAltitudeRequired(false); 
+      mCriteria01.setBearingRequired(false); 
+      mCriteria01.setCostAllowed(true); 
+      mCriteria01.setPowerRequirement(Criteria.POWER_LOW); 
+      strLocationProvider =  
+      mLocationManager01.getBestProvider(mCriteria01, true); 
+       
+      mLocation01 = mLocationManager01.getLastKnownLocation 
+      (strLocationProvider); 
+    } 
+    catch(Exception e) 
+    { 
+      mTextView01.setText(e.toString()); 
+      e.printStackTrace(); 
+    } 
+  } </PRE>
+<BR><STRONG>获取经纬度，并返回GeoPoint对象</STRONG><BR><PRE class="java" name="code">private GeoPoint getGeoByLocation(Location location)
+  {
+    GeoPoint gp = null;
+    try
+    {
+      /* 当Location存在 */
+      if (location != null)
+      {
+        double geoLatitude = location.getLatitude()*1E6;
+        double geoLongitude = location.getLongitude()*1E6;
+        gp = new GeoPoint((int) geoLatitude, (int) geoLongitude);
+      }
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
+    return gp;
+  }</PRE>
+<BR><STRONG>将经纬度转换成实际屏幕坐标</STRONG><BR><PRE class="java" name="code">Point myScreenCoords = new Point();
+GeoPoint tmpGeoPoint = new GeoPoint((int)(mLocation.getLatitude()*1E6),(int)(mLocation.getLongitude()*1E6));
+mapView.getProjection().toPixels(tmpGeoPoint, myScreenCoords);</PRE>
+<BR><BR><STRONG>点击MapView任意一点获得坐标</STRONG><BR><PRE class="java" name="code">@Override 
+public boolean onTouchEvent(MotionEvent ev) { 
+    int actionType = ev.getAction(); 
+    switch (actionType) { 
+    case MotionEvent.ACTION_UP:      
+            Projection proj = mapView.getProjection(); 
+            GeoPoint loc = proj.fromPixels((int)arg0.getX(), (int)arg0.getY());  
+            String sirina=Double.toString(loc.getLongitudeE6()/1000000); 
+            String dolzina=Double.toString(loc.getLatitudeE6()/1000000); 
+    
+    } 
+ 
+    return false;
+}</PRE>
+<BR><BR><BR><STRONG>经纬度改变来刷新地图</STRONG><BR><PRE class="java" name="code">  public void refreshMapView() 
+  { 
+    GeoPoint p = new GeoPoint((int)(dLat* 1E6), (int)(dLng* 1E6)); 
+    mMapView01.displayZoomControls(true);
+    /* 将Map的中点移至GeoPoint */
+    mMapController01.animateTo(p); 
+    mMapController01.setZoom(intZoomLevel); 
+  } </PRE>
+<BR><BR><STRONG>根据当前的经纬度，获取相关的一些地址信息</STRONG><BR><PRE class="java" name="code">/* 创建Geocoder对象 */
+        //根据地理环境来确定编码
+        //注意这个Locale是java.util.Locale包的类,获取当前系统设定的语言
+        Geocoder gc = new Geocoder
+        (EX09_05.this, Locale.getDefault());
+        
+        /* 取出地理坐标经纬度 */
+        double geoLatitude = (int)gp.getLatitudeE6()/1E6;
+        double geoLongitude = (int)gp.getLongitudeE6()/1E6;
+        
+        /* 自经纬度取得地址（可能有多行地址） */
+        List&lt;Address&gt; lstAddress = 
+        gc.getFromLocation(geoLatitude, geoLongitude, 1);
+        
+        StringBuilder sb = new StringBuilder();
+        
+        /* 判断地址是否为多行 */
+        if (lstAddress.size() &gt; 0)
+        {
+          Address adsLocation = lstAddress.get(0);
+
+          for(int i=0;i&lt;adsLocation.getMaxAddressLineIndex();i++)
+          {
+            sb.append(adsLocation.getAddressLine(i)).append("\n");
+          }
+          sb.append(adsLocation.getLocality()).append("\n");
+          sb.append(adsLocation.getPostalCode()).append("\n");
+          sb.append(adsLocation.getCountryName());
+        }
+        </PRE><BR><BR><BR> <STRONG>根据输入地址，取得其GeoPoint对象 </STRONG><BR><PRE class="java" name="code">  private GeoPoint getGeoByAddress(String strSearchAddress) 
+  { 
+    GeoPoint gp = null; 
+    try 
+    { 
+      if(strSearchAddress!="") 
+      { 
+        Geocoder mGeocoder01 = new Geocoder 
+        (EX09_07.this, Locale.getDefault()); 
+         
+        List&lt;Address&gt; lstAddress = mGeocoder01.getFromLocationName
+                           (strSearchAddress, 1);
+        if (!lstAddress.isEmpty()) 
+        { 
+          Address adsLocation = lstAddress.get(0); 
+          double geoLatitude = adsLocation.getLatitude()*1E6; 
+          double geoLongitude = adsLocation.getLongitude()*1E6; 
+          gp = new GeoPoint((int) geoLatitude, (int) geoLongitude); 
+        } 
+      } 
+    } 
+    catch (Exception e) 
+    {  
+      e.printStackTrace();  
+    } 
+    return gp; 
+  } </PRE>
+<BR><BR><STRONG>地图放大缩小按钮</STRONG><BR><PRE class="java" name="code"> /* 放大Map的Button */
+    mButton02 = (Button)findViewById(R.id.myButton2); 
+    mButton02.setOnClickListener(new Button.OnClickListener() 
+    { 
+     
+      public void onClick(View v) 
+      { 
+        intZoomLevel++; 
+        if(intZoomLevel&gt;mMapView01.getMaxZoomLevel()) 
+        { 
+          intZoomLevel = mMapView01.getMaxZoomLevel(); 
+        } 
+        mMapController01.setZoom(intZoomLevel); 
+      } 
+    }); 
+     
+    /* 缩小Map的Button */
+    mButton03 = (Button)findViewById(R.id.myButton3); 
+    mButton03.setOnClickListener(new Button.OnClickListener() 
+    { 
+       
+      public void onClick(View v) 
+      { 
+        intZoomLevel--; 
+        if(intZoomLevel&lt;1) 
+        { 
+          intZoomLevel = 1; 
+        } 
+        mMapController01.setZoom(intZoomLevel); 
+      } 
+    });</PRE>
+<BR><BR>以下文章转载：<A href="http://marshal.easymorse.com/archives/2528" target="_blank">http://marshal.easymorse.com/archives/2528</A>
+<BR>android location provider有两个：<BR><BR>&nbsp;&nbsp;&nbsp; * 
+LocationManager.GPS_PROVIDER：GPS，精度比较高，但是慢而且消耗电力，而且可能因为天气原因或者障碍物而无法获取卫星信息，另外设备可能没有GPS模块；
+<BR>&nbsp;&nbsp;&nbsp; * 
+LocationManager.NETWORK_PROVIDER：通过网络获取定位信息，精度低，耗电少，获取信息速度较快，不依赖GPS模块。<BR>
+<BR>为了程序的通用性，希望动态选择location provider。对android通过Location 
+API显示地址信息做了个别改动，可以看到使用了gps定位，精度较高：<BR><BR><IMG src="GPS开发常用方法_files/d38467c5-217c-3131-87e5-1f2743f5a22a.png">
+<BR><BR>这里使用到了Criteria，可根据当前设备情况自动选择哪种location provider。见<BR><PRE class="java" name="code">LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+Criteria criteria = new Criteria();
+criteria.setAccuracy(Criteria.ACCURACY_FINE);// 设置为最大精度
+criteria.setAltitudeRequired(false);//不要求海拔信息
+criteria.setBearingRequired(false);// 不要求方位信息
+criteria.setCostAllowed(true);//是否允许付费
+criteria.setPowerRequirement(Criteria.POWER_LOW);// 对电量的要求
+
+location = locationManager
+        .getLastKnownLocation(locationManager.getBestProvider(criteria, true));</PRE>
+<BR>原来的写法很简单：<PRE class="java" name="code">LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+location=locationManager.getLastKnownLocation(LocationManager.NETWORK</PRE>
+<BR><BR><BR></DIV>
+<DIV class="attachments">
+<UL style="display: none;">
+  <LI><A href="GPS开发常用方法_files/d38467c5-217c-3131-87e5-1f2743f5a22a.png" target="_blank"><IMG 
+  class="magplus" title="点击查看原始大小图片" src="GPS开发常用方法_files/d38467c5-217c-3131-87e5-1f2743f5a22a-thumb.png"></A></LI>
+  <LI>大小: 180 KB</LI></UL>
+<UL>
+  <LI><A onclick="$$('div.attachments ul').invoke('show');$(this).up(1).hide();return false;" 
+  href="http://qq361119908.iteye.com/blog/665074#">查看图片附件</A></LI></UL></DIV><IFRAME 
+height="60" src="GPS开发常用方法_files/468x60v2.htm" frameBorder="0" width="468" 
+scrolling="no"></IFRAME>
+<DIV id="bottoms" class="clearfix">
+<DIV id="share_weibo">分享到：      <A title="分享到新浪微博" href="javascript:;" 
+data-type="sina"><IMG src="GPS开发常用方法_files/t_sina.gif"></A><A title="分享到腾讯微博" 
+href="javascript:;" data-type="qq"><IMG 
+src="GPS开发常用方法_files/t_qq.gif"></A></DIV></DIV>
+<DIV class="blog_nav">
+<DIV class="pre_next"><A class="next" title="读取SIM卡信息" href="http://qq361119908.iteye.com/blog/673392">读取SIM卡信息</A>| 
+     <A class="pre" title="Android中AsyncTask的用法" href="http://qq361119908.iteye.com/blog/662069">Android中AsyncTask的用法</A></DIV></DIV>
+<DIV class="blog_bottom">
+<UL>
+  <LI>20:30</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/665074#comments">评论</A> / 浏览 (1 
+  / 3160)</LI>
+  <LI>分类:<A href="http://www.iteye.com/blogs/category/mobile">移动开发</A></LI>
+  <LI class="last"><A class="more" href="http://www.iteye.com/wiki/blog/665074" 
+  target="_blank">相关推荐</A></LI></UL></DIV>
+<DIV class="blog_comment">
+<H5>评论</H5><A id="comments" name="comments"></A>
+<DIV id="bc1549151">
+<DIV class="comment_title">1 楼    <A href="http://gaogaf.iteye.com/" target="_blank">gaogaf</A> 
+   2010-06-22&nbsp;&nbsp;          </DIV>
+<DIV class="comment_content">你好，我想取得卫星个数应该怎么做？</DIV></DIV></DIV>
+<DIV class="blog_comment">
+<H5>发表评论</H5>
+<P style="text-align: center; margin-top: 30px; margin-bottom: 0px;"><A style="background-color: white;" 
+href="http://qq361119908.iteye.com/login"> <IMG style="margin-right: 10px; vertical-align: middle;" 
+src="GPS开发常用方法_files/login_icon.png"></A><A href="http://qq361119908.iteye.com/login"> 
+ 您还没有登录,请您登录后再发表评论 </A></P></DIV></DIV>
+<SCRIPT type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 665074;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', 'GPS开发常用方法 和用Criteria确定android location providerGPS开发常用方法');
+  });
+  $$('#main .blog_comment > div').each(function(comment){// comment
+    var post_id = comment.id.substr(2);
+    $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+      var location = window.location;
+      source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+      source_url += "#" + comment.id;
+      pre.writeAttribute('codeable_id', post_id);
+      pre.writeAttribute('codeable_type', "Post");
+      pre.writeAttribute('source_url', source_url);
+      pre.writeAttribute('pre_index', index);
+      pre.writeAttribute('title', 'GPS开发常用方法 和用Criteria确定android location providerGPS开发常用方法');
+    });
+  });
+  code_favorites_init();
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</SCRIPT>
+</DIV>
+<DIV id="local">
+<DIV class="local_top"></DIV>
+<DIV id="blog_owner">
+<DIV id="blog_owner_logo"><A href="http://qq361119908.iteye.com/"><IMG class="logo" 
+title="ET焖猪仔的博客: ET焖猪仔" alt="ET焖猪仔的博客" src="GPS开发常用方法_files/3fd18716-3095-344d-a372-c6fcf66b87d5.jpg"></A></DIV>
+<DIV id="blog_owner_name">ET焖猪仔</DIV></DIV>
+<DIV id="blog_actions">
+<UL>
+  <LI>浏览: 62735 次</LI>
+  <LI>性别: <IMG title="男" alt="Icon_minigender_1" src="GPS开发常用方法_files/icon_minigender_1.gif"></LI>
+  <LI>来自: 广东</LI>
+  <LI><IMG src="GPS开发常用方法_files/offline.gif"></LI>
+  <LI><A class="profile" 
+  href="http://qq361119908.iteye.com/blog/profile">详细资料</A><A class="guest_book" 
+  href="http://qq361119908.iteye.com/blog/guest_book">留言簿</A></LI></UL>
+<H5>搜索本博客</H5>
+<FORM method="get" action="/blog/search"><INPUT style="width: 110px; margin-left: 10px;" 
+id="query" class="text" name="query" type="text"><INPUT class="submit" value="搜索" type="submit"></FORM></DIV>
+<DIV id="user_visits" class="clearfix">
+<H5>最近访客 <SPAN 
+style="padding-left: 30px; font-size: 12px; font-weight: normal;"><A href="http://qq361119908.iteye.com/blog/user_visits">&gt;&gt;更多访客</A></SPAN></H5>
+<DIV class="user_visit">
+<DIV class="logo"><A href="http://asfman.iteye.com/" target="_blank"><IMG class="logo" 
+title="asfman的博客: asfman" alt="asfman的博客" src="GPS开发常用方法_files/user-logo-thumb.gif"></A></DIV>
+<DIV class="left"><A href="http://asfman.iteye.com/" 
+target="_blank">asfman</A></DIV></DIV>
+<DIV class="user_visit">
+<DIV class="logo"><A href="http://codenull.iteye.com/" target="_blank"><IMG 
+class="logo" title="codenull的博客: " alt="codenull的博客" src="GPS开发常用方法_files/user-logo-thumb.gif"></A></DIV>
+<DIV class="left"><A href="http://codenull.iteye.com/" 
+target="_blank">codenull</A></DIV></DIV>
+<DIV class="user_visit">
+<DIV class="logo"><A href="http://callmenicholas.iteye.com/" 
+target="_blank"><IMG class="logo" title="callmenicholas的博客: " alt="callmenicholas的博客" 
+src="GPS开发常用方法_files/user-logo-thumb.gif"></A></DIV>
+<DIV class="left"><A href="http://callmenicholas.iteye.com/" 
+target="_blank">callmenicholas</A></DIV></DIV>
+<DIV class="user_visit">
+<DIV class="logo"><A href="http://yushan-future-163-com.iteye.com/" target="_blank"><IMG 
+class="logo" title="雨珊66的博客: " alt="雨珊66的博客" src="GPS开发常用方法_files/user-logo-thumb.gif"></A></DIV>
+<DIV class="left"><A href="http://yushan-future-163-com.iteye.com/" target="_blank">雨珊66</A></DIV></DIV></DIV>
+<DIV id="blog_menu">
+<H5>博客分类</H5>
+<UL>
+  <LI><A href="http://qq361119908.iteye.com/">全部博客 (72)</A></LI>
+  <LI><A href="http://qq361119908.iteye.com/category/104365">android 
+  (71)</A></LI></UL></DIV>
+<DIV id="guest_books">
+<H5>我的留言簿 <SPAN style="padding-left: 20px; font-size: 12px; font-weight: normal;"><A 
+href="http://qq361119908.iteye.com/blog/guest_book">&gt;&gt;更多留言</A></SPAN></H5>
+<UL></UL></DIV>
+<DIV id="blog_others">
+<H5>其他分类</H5>
+<UL>
+  <LI><A href="http://qq361119908.iteye.com/blog/favorite">我的收藏</A> (167)</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/code_favorite">我的代码</A> 
+(0)</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/topic">我的论坛主题帖</A> (0)</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/post">我的所有论坛帖</A> (3)</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/article">我的精华良好帖</A> 
+(0)</LI></UL></DIV>
+<DIV id="recent_groups">
+<H5>最近加入群组</H5>
+<UL>
+  <LI><A href="http://android.group.iteye.com/">Android</A></LI></UL></DIV>
+<DIV id="month_blogs">
+<H5>存档</H5>
+<UL>
+  <LI><A href="http://qq361119908.iteye.com/blog/monthblog/2011-09">2011-09</A> 
+  (1)</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/monthblog/2011-05">2011-05</A> 
+  (1)</LI>
+  <LI><A href="http://qq361119908.iteye.com/blog/monthblog/2011-04">2011-04</A> 
+  (2)</LI>
+  <LI><A 
+href="http://qq361119908.iteye.com/blog/monthblog_more">更多存档...</A></LI></UL></DIV>
+<DIV id="comments_top">
+<H5>评论排行榜</H5>
+<UL>
+  <LI><A title="Fragments (Android官方文档中文版)" href="http://qq361119908.iteye.com/blog/1171857">Fragments 
+  (Android官方文档中文版)</A></LI>
+  <LI><A title="【Android】Uri、UriMatcher、ContentUris详解 " href="http://qq361119908.iteye.com/blog/1024477">【Android】Uri、UriMatcher、ContentUri 
+  ...</A></LI></UL></DIV>
+<DIV id="rss">
+<UL>
+  <LI><A href="http://qq361119908.iteye.com/rss" target="_blank"><IMG alt="Rss" 
+  src="GPS开发常用方法_files/rss.png"></A></LI>
+  <LI><A href="http://fusion.google.com/add?feedurl=http://qq361119908.iteye.com/rss" 
+  target="_blank"><IMG alt="Rss_google" 
+  src="GPS开发常用方法_files/rss_google.gif"></A></LI></UL></DIV>
+<DIV class="local_bottom"></DIV></DIV></DIV>
+<DIV id="footer" class="clearfix">
+<DIV id="copyright">
+<HR>
+声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<BR>© 2003-2011 
+ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]        
+</DIV></DIV></DIV>
+<SCRIPT type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</SCRIPT>
+</BODY></HTML>

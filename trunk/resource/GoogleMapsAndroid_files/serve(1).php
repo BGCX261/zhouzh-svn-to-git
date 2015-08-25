@@ -1,0 +1,1 @@
+document.write('\x3cdiv class=\"html-advertisement\" id=\"ad-1806\"\x3e\x3cdiv class=\"ad-header\"\x3e\x3cdiv class=\'note yellow clearfix\'\x3e\x3cp\x3e\x3ca title=\"dotMobi certification program\" href=\"/node/223\"\x3eCertification\x3c/a\x3e\x3c/p\x3e\x3c/div\x3e\x3c/div\x3e\x3c/div\x3e');
